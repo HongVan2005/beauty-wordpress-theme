@@ -684,3 +684,33 @@ html body{padding-bottom:0!important;margin-bottom:0!important}
 .add_to_cart_button.added{background:#2f7d4f;border-color:#2f7d4f}
 .bv-addcart,.bv-prod-actions{position:relative;z-index:2}
 .added_to_cart.wc-forward{margin-top:8px;font-size:13px;font-weight:700;color:var(--spa-brown,#604b3f);text-decoration:underline}
+
+
+/* BANNER BEAUTY SPA: tràn hết chiều ngang section, không có liên kết */
+body .bv-promo-banner-section{
+  display:block;
+  width:100%;
+  max-width:none;
+  margin:0;
+  padding:8px 0;
+  overflow:hidden;
+  background:linear-gradient(90deg,#f8f1e8 0%,#fffaf4 50%,#f8f1e8 100%);
+  line-height:0;
+}
+body .bv-promo-banner-section .bv-promo-banner-image{
+  display:block;
+  width:100%;
+  max-width:none;
+  height:auto;
+  margin:0;
+  border:0;
+  border-radius:0;
+  box-shadow:none;
+  object-fit:cover;
+  cursor:default;
+  pointer-events:none;
+}
+@media(max-width:700px){
+  body .bv-promo-banner-section{padding:4px 0}
+  body .bv-promo-banner-section .bv-promo-banner-image{width:100%;height:auto}
+}

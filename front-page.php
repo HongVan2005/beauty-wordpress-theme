@@ -27,6 +27,11 @@
  <div class="section-cta"><a class="btn btn-outline" href="<?php echo esc_url(get_post_type_archive_link('spa_service')); ?>">Xem tất cả dịch vụ</a></div>
 </div></section>
 
+<!-- Banner quảng cáo Beauty Spa: tràn toàn chiều ngang, không gắn liên kết -->
+<section class="bv-promo-banner-section" aria-label="Banner quảng cáo Beauty Spa">
+ <img class="bv-promo-banner-image" src="<?php echo esc_url(get_stylesheet_directory_uri() . '/assets/images/beauty-personalized-spa-banner.jpg'); ?>" alt="Beauty Spa – Chọn liệu trình Spa theo nhu cầu cá nhân, tư vấn chuyên sâu và chăm sóc an toàn" width="1300" height="296" loading="lazy" decoding="async">
+</section>
+
 <?php $beauty_pk = new WP_Query(array('post_type' => 'spa_package', 'posts_per_page' => 3, 'post_status' => 'publish', 'orderby' => 'menu_order title', 'order' => 'ASC', 'no_found_rows' => true)); if ($beauty_pk->have_posts()) : ?>
 <section class="section bv-section"><div class="container">
  <div class="section-heading"><span class="eyebrow">Gói liệu trình</span><h2>Combo hoàn hảo - Tiết kiệm tối đa</h2><?php /* [FIX 2] ĐỔI TIÊU ĐỀ */ ?><p>Giá và quyền lợi hiển thị theo dữ liệu quản trị nhập. Nội dung mẫu cần được chủ spa xác nhận.</p></div>
