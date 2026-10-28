@@ -1,0 +1,54 @@
+BEAUTY WORDPRESS THEME - HUONG DAN CAI DAT VA DU LIEU
+
+CAI DAT
+1. Sao luu website truoc khi thay theme neu ban dang co website hoat dong.
+2. WordPress Admin > Giao dien > Giao dien > Them moi > Tai giao dien len.
+3. Chon file beauty-wordpress-theme.zip va kich hoat.
+4. Vao Cai dat > Duong dan tinh > Luu thay doi de cap nhat duong dan.
+5. Vao Giao dien > Tuy bien > Thong tin lien he Spa de cap nhat hotline, email, dia chi, gio hoat dong va lien ket Zalo/Messenger.
+6. Tao menu tai Giao dien > Menu va gan vao Menu chinh neu muon tuy chinh thu tu menu.
+7. Tao trang Dat lich va them shortcode [beaute_spa_booking] neu trang chua duoc tao tu dong. Trang Bang gia su dung mau trang Bang gia Spa.
+8. Neu muon ban hang, cai va kich hoat WooCommerce, sau do chay buoc khoi tao du lieu WooCommerce theo huong dan quan tri (neu plugin duoc cai sau khi theme da khoi tao, can tao danh muc va san pham trong WooCommerce).
+
+DU LIEU DUOC TAO TU DONG KHI KICH HOAT
+- 7 danh muc dich vu: Cham soc da; Lam sach da va cham soc da mun; Massage thu gian; Goi dau duong sinh; Triet long; Cham soc co the; Cham soc tay va chan.
+- 12 dich vu mau co mo ta, thoi luong va gia tham khao.
+- 3 nhom bang gia va 5 goi lieu trinh/ combo tham khao.
+- 3 nhom uu dai va 3 bai uu dai mau.
+- 3 bai viet kien thuc lam dep va cac trang Gioi thieu, Lien he, Dat lich, Bang gia, Tin tuc, San pham.
+- Neu WooCommerce da duoc kich hoat khi khoi tao: 6 danh muc va 6 san pham mau.
+
+QUAN TRONG
+- Noi dung, ten san pham va gia trong bo du lieu khoi tao la DU LIEU MAU THAM KHAO, khong phai thong tin giao dich da duoc xac minh. Chu website phai xac nhan gia, dich vu, thanh phan, nguon goc san pham va dieu kien uu dai truoc khi cong khai.
+- So dien thoai 0900 000 000, email beauty@example.com va dia chi Hai Chau, Da Nang la thong tin placeholder, khong phai thong tin lien he that.
+- Khong tu dong tao danh gia khach hang gia, chung nhan gia mao hoac cam ket hieu qua dieu tri.
+- Hinh anh trong theme la anh minh hoa, khong khang dinh la anh co so Beauty thuc te.
+- Cau hinh SMTP de email dat lich gui on dinh. Thanh toan, van chuyen, thue va cong thanh toan WooCommerce can duoc cau hinh rieng.
+- Sau khi kich hoat, vao Dịch vụ Spa, Gói liệu trình & bảng giá, Ưu đãi & khuyến mãi, Bài viết và WooCommerce de chinh sua du lieu.
+
+
+BẢN V5 - CẬP NHẬT GIAO DIỆN
+- Sửa ảnh banner lỗi bằng ảnh cục bộ trong theme, không phụ thuộc URL ảnh ngoài cho banner.
+- Menu “Về chúng tôi” có mục Giới thiệu và Hình ảnh; bỏ mục Ưu đãi khỏi menu và trang chủ.
+- Bổ sung form liên hệ có kiểm tra dữ liệu và gửi email tới địa chỉ quản trị WordPress.
+- Bổ sung 18 ảnh minh họa sản phẩm mẫu lưu cục bộ và gán ảnh đại diện khi WooCommerce hoạt động. Ảnh sản phẩm là mockup minh họa, không phải ảnh chụp hàng hóa thật.
+- Bổ sung khu vực sản phẩm nổi bật; một số sản phẩm mẫu được đánh dấu nổi bật/giảm giá.
+- Tinh chỉnh khoảng cách chữ và tiêu đề, đặc biệt trên banner và menu.
+- Trang Hình ảnh và form liên hệ dùng nội dung mẫu; cần cập nhật ảnh thật và thông tin liên hệ trước khi public.
+
+BẢN V7 - ALBUM ẢNH, GIỚI THIỆU VÀ DỊCH VỤ
+- Thêm 6 ảnh spa khác nhau theo các chủ đề: chăm sóc da, massage, gội đầu dưỡng sinh, không gian, sản phẩm và tư vấn.
+- Trang Hình ảnh hiển thị dạng album lưới, ảnh có tỷ lệ thống nhất, mô tả riêng và có thể bấm mở ảnh lớn.
+- Ảnh được tự nhập vào Media Library khi theme khởi tạo, giúp tránh đường dẫn cứng theo tên thư mục theme.
+- Trang Giới thiệu được mở rộng với câu chuyện/định hướng, giá trị phục vụ, nhóm dịch vụ, quy trình và cam kết trải nghiệm.
+- Các dịch vụ chưa có ảnh đại diện được gán ảnh phù hợp theo nhóm dịch vụ.
+- Sau khi cài bản V7, tải lại trang và xóa cache. Nếu plugin cache/CDN đang hoạt động, hãy xóa cả cache plugin/CDN.
+- Ảnh là ảnh minh họa được tạo cho giao diện, không phải ảnh chụp thực tế của cơ sở. Hãy thay ảnh bằng ảnh của spa khi sẵn sàng công khai.
+
+
+V7 - SỬA LỖI ẢNH VÀ CẬP NHẬT NỘI DUNG
+- Bổ sung migration nội dung riêng cho V7 để không bị bỏ qua bởi cờ cài đặt V6 đã tồn tại.
+- Album sử dụng URL ảnh trực tiếp từ thư mục assets/images của theme, không phụ thuộc URL Media Library đã cũ.
+- Mỗi dịch vụ demo có ảnh dự phòng cục bộ theo tên dịch vụ; tăng phiên bản CSS/JS để tránh cache cũ.
+- Kiểm tra lại PHP và ZIP trước khi phát hành. Vẫn cần kiểm tra trên hosting thực tế sau khi cài.
+- Xem PROMPT-HOAN-CHINH-V7.txt để biết yêu cầu phát triển đầy đủ.

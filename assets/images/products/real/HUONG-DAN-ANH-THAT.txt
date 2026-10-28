@@ -1,0 +1,19 @@
+THƯ MỤC ẢNH SẢN PHẨM THẬT
+=========================
+Chép ảnh thật (vuông 1:1, tối thiểu 800x800, đuôi .jpg / .png / .webp) vào thư mục này,
+đặt tên theo bảng dưới. Theme tự nhận, không cần sửa code. Ảnh thật luôn được ưu tiên hơn ảnh minh họa.
+
+Sản phẩm trên trang chủ            -> tên tệp
+Sữa rửa mặt dịu nhẹ Beauty         -> sua-rua-mat.jpg
+Gel rửa mặt tạo bọt Beauty         -> gel-rua-mat.jpg
+Tẩy trang dịu nhẹ Beauty           -> tay-trang.jpg
+Nước cân bằng cấp ẩm Beauty        -> toner.jpg
+Serum cấp ẩm Beauty                -> serum.jpg
+Kem dưỡng ẩm hằng ngày Beauty      -> kem-duong.jpg
+Kem dưỡng ban đêm Beauty           -> kem-dem.jpg
+Kem chống nắng dùng ban ngày       -> chong-nang.jpg
+Tẩy tế bào chết                    -> tay-te-bao-chet.jpg
+Tinh chất                          -> tinh-chat.jpg
+
+Thứ tự ưu tiên: URL nhập tay trong sản phẩm > uploads/beauty-products/ > thư mục này >
+bảng link + BEAUTY_PRODUCT_IMG_BASE (GitHub) > ảnh vẽ minh họa của theme.

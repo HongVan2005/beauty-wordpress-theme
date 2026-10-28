@@ -1,0 +1,1 @@
+<?php get_header(); ?><main class="content-area container"><h1 class="page-title">Không tìm thấy trang</h1><p>Đường dẫn có thể đã thay đổi hoặc nội dung không còn tồn tại.</p><a class="btn" href="<?php echo esc_url(home_url('/')); ?>">Về trang chủ</a></main><?php get_footer(); ?>

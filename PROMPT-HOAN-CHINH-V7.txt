@@ -1,0 +1,73 @@
+PROMPT HOÀN CHỈNH — NÂNG CẤP WEBSITE WORDPRESS BEAUTY SPA (BẢN V7)
+
+Vai trò:
+Bạn là chuyên gia WordPress/PHP, UX/UI, tối ưu hình ảnh và kiểm thử website. Hãy đọc toàn bộ mã nguồn theme và sửa trực tiếp trên theme hiện có; không chỉ viết giao diện minh họa, không xóa các tính năng đang hoạt động và không báo hoàn thành nếu chưa kiểm tra mã nguồn, đường dẫn ảnh và gói ZIP.
+
+Mục tiêu:
+Hoàn thiện website Beauty Spa theo phong cách cao cấp, nhẹ nhàng, màu kem–nâu–vàng champagne; nội dung tiếng Việt chuẩn dấu, font dễ đọc, bố cục nhất quán trên desktop/tablet/mobile.
+
+Các yêu cầu bắt buộc:
+1. Ảnh và đường dẫn:
+- Không sử dụng ảnh URL bên ngoài làm nguồn bắt buộc để giao diện hoạt động.
+- Tất cả ảnh cần dùng phải được đóng gói trong theme tại assets/images và kiểm tra tồn tại thật.
+- Dùng URL ảnh theo thư mục theme đang hoạt động; tránh URL uploads cũ, URL localhost, URL staging hoặc URL tuyệt đối của website phát triển.
+- Không để ảnh bị trùng lặp vô lý giữa các dịch vụ; từng dịch vụ phải có ảnh phù hợp và khác nhau.
+- Đặt alt tiếng Việt mô tả đúng ảnh, lazy-load cho ảnh dưới màn hình đầu tiên, không lazy-load ảnh hero quan trọng.
+- Ảnh dùng object-fit: cover, tỷ lệ nhất quán, không kéo méo. Nếu ảnh không tồn tại, dùng ảnh dự phòng cục bộ hợp lệ.
+- Tránh nhập ảnh vào Media Library lặp lại mỗi lần tải trang; nếu import thì phải có kiểm tra tồn tại và chống tạo bản sao.
+
+2. Trang Hình ảnh:
+- Chuyển thành album ảnh thực thụ, phân nhóm rõ ràng: Chăm sóc da; Massage & thư giãn; Gội đầu dưỡng sinh; Không gian spa; Sản phẩm chăm sóc; Tư vấn khách hàng.
+- Mỗi mục có ảnh riêng, tiêu đề, mô tả ngắn; ảnh/thẻ có cùng tỷ lệ và chiều cao tiêu đề đồng nhất.
+- Bấm ảnh có thể xem ảnh lớn hoặc mở ảnh gốc hợp lệ.
+- Hiển thị dạng lưới 3 cột desktop, 2 cột tablet, 1 cột mobile; không vỡ bố cục.
+- Không được chỉ hiện alt text trên ô trống. Kiểm tra HTTP/đường dẫn từng ảnh trong theme và xác nhận mọi tệp có trong ZIP.
+
+3. Trang Giới thiệu:
+- Viết nội dung chi tiết có cấu trúc: câu chuyện Beauty Spa, triết lý chăm sóc, giá trị cốt lõi, nhóm dịch vụ, quy trình 5 bước, cam kết trải nghiệm, lời mời đặt lịch.
+- Chia đoạn dễ đọc, không để khoảng trắng lớn vô lý, dùng ảnh thật/ảnh minh họa cục bộ và alt phù hợp.
+- Không tự bịa chứng chỉ, lịch sử, nhân sự, địa chỉ hoặc thành tích. Đánh dấu các thông tin mẫu cần chủ website xác nhận.
+
+4. Trang Dịch vụ:
+- Có danh mục riêng: chăm sóc da, làm sạch/nặn mụn, massage thư giãn, gội đầu dưỡng sinh, triệt lông, chăm sóc cơ thể, chăm sóc tay/chân.
+- Mỗi dịch vụ cần tên, mô tả chi tiết, ảnh riêng, thời lượng, giá hoặc trạng thái “Liên hệ”, lưu ý và nút xem chi tiết/đặt lịch.
+- Các ảnh dự phòng theo tên dịch vụ, không dùng một ảnh chung cho mọi thẻ.
+- Bộ lọc/tìm kiếm danh mục phải hoạt động; nếu chưa có dữ liệu thì hiển thị hướng dẫn quản trị thân thiện.
+
+5. Bảng giá và đặt lịch:
+- Giá, thời lượng, giá khuyến mãi phải lấy từ dữ liệu quản trị, không hiển thị giá giả như giá thật.
+- Phân nhóm bảng giá theo danh mục dịch vụ, hỗ trợ tìm kiếm và lọc; hiển thị rõ đơn vị VNĐ.
+- Form đặt lịch cần nonce, kiểm tra và làm sạch dữ liệu đầu vào, kiểm tra ngày giờ hợp lệ, thông báo thành công/lỗi; nêu rõ lịch chỉ xác nhận sau khi spa liên hệ.
+- Không lưu thông tin nhạy cảm không cần thiết; không tự gửi xác nhận nếu chưa cấu hình email.
+
+6. Sản phẩm và WooCommerce:
+- Không tạo dữ liệu giả khiến khách tưởng là hàng thật. Dữ liệu demo phải được ghi chú rõ.
+- Có ảnh sản phẩm riêng, danh mục, mô tả, giá, tồn kho và trang chi tiết khi WooCommerce được cài.
+- Nếu WooCommerce không được cài, hiển thị thông báo hướng dẫn thay vì lỗi PHP.
+
+7. Banner, font và giao diện:
+- Sửa font tiếng Việt, dấu câu, line-height, letter-spacing, cỡ chữ và khoảng cách heading.
+- Tiêu đề banner không bị tràn, không bị lệch hàng; chữ dễ đọc trên nền ảnh có lớp phủ khi cần.
+- Các card cùng chiều cao hợp lý, tiêu đề căn thẳng hàng; responsive trên mobile.
+- Menu dropdown, menu mobile, nút đặt lịch và liên kết nội bộ hoạt động đúng.
+
+8. Tính tương thích và chất lượng:
+- Tuân thủ WordPress coding conventions, escape đầu ra, sanitize đầu vào, nonce cho form.
+- Không thêm thư viện ngoài không cần thiết, không nhúng secret/API key.
+- Tăng phiên bản cache CSS/JS khi cập nhật để tránh người dùng nhìn thấy bản cũ.
+- Đảm bảo các trang có nội dung cũ được cập nhật bằng migration có version riêng, không bị chặn bởi cờ cài đặt của phiên bản trước.
+- Không ghi đè nội dung do khách hàng tự sửa nếu không cần thiết; sao lưu hoặc kiểm tra trạng thái trước khi migrate.
+
+Quy trình kiểm thử bắt buộc:
+- Liệt kê các lỗi tìm thấy trong theme gốc và cách đã sửa.
+- Kiểm tra tất cả tệp PHP bằng php -l.
+- Kiểm tra ZIP bằng unzip -t.
+- Liệt kê tất cả ảnh được tham chiếu trong PHP/CSS/JS và xác nhận tệp tồn tại.
+- Kiểm tra ảnh có thể mở được và không có tệp ảnh hỏng.
+- Kiểm tra ảnh/dịch vụ không bị gán trùng không cần thiết.
+- Kiểm tra đường dẫn URL không trỏ đến staging/localhost.
+- Không khẳng định đã kiểm tra trên hosting thật nếu chưa được triển khai lên hosting.
+- Đóng gói một ZIP hoàn chỉnh, kèm hướng dẫn cài đặt/cập nhật và danh sách những dữ liệu mẫu cần thay bằng thông tin thật.
+
+Kết quả mong muốn:
+Một theme WordPress có thể cài đặt, ảnh cục bộ không lỗi đường dẫn, album ảnh rõ ràng, trang giới thiệu đầy đủ, trang dịch vụ có ảnh và phân loại, font/banner chỉn chu, các tính năng hiện có được giữ lại. Báo cáo rõ các kiểm tra đã thực hiện và các giới hạn chưa thể xác minh trên hosting.
