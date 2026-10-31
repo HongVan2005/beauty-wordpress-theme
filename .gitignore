@@ -1,0 +1,9 @@
+﻿beauty-wordpress-theme-v2-backup-*/
+*.backup-*
+*.tmp
+*.bak
+*.old
+*.orig
+*.rej
+.DS_Store
+Thumbs.db

@@ -22,7 +22,7 @@ $beauty_book = add_query_arg('dich-vu', $beauty_id, home_url('/dat-lich/'));
 </div></section>
 <main class="container bv-detail-body">
  <div class="bv-detail-main">
-  <section class="bv-block"><h2>Giới thiệu dịch vụ</h2><div class="entry-content"><?php the_content(); ?></div></section>
+  <section class="bv-block"><div class="entry-content"><?php the_content(); ?></div></section>
   <?php
   $beauty_sections = array('_s_suitable' => array('Phù hợp với nhu cầu nào', 'ul'), '_s_benefits' => array('Lợi ích và giới hạn thực tế', 'ul'), '_s_caution' => array('Cần cân nhắc hoặc tư vấn trước', 'ul'), '_s_steps' => array('Các bước thực hiện', 'ol'), '_s_prepare' => array('Chuẩn bị trước khi đến spa', 'ul'), '_s_aftercare' => array('Chăm sóc sau dịch vụ', 'ul'));
   foreach ($beauty_sections as $beauty_key => $beauty_def) {
@@ -37,6 +37,39 @@ $beauty_book = add_query_arg('dich-vu', $beauty_id, home_url('/dat-lich/'));
   <?php
   $beauty_related = new WP_Query(array('post_type' => 'spa_service', 'posts_per_page' => 3, 'post__not_in' => array($beauty_id), 'post_status' => 'publish', 'tax_query' => ($beauty_terms && !is_wp_error($beauty_terms)) ? array(array('taxonomy' => 'spa_service_cat', 'field' => 'term_id', 'terms' => wp_list_pluck($beauty_terms, 'term_id'))) : array()));
   if ($beauty_related->have_posts()) : ?><div class="bv-side-card"><h3>Dịch vụ liên quan</h3><ul class="bv-side-list"><?php while ($beauty_related->have_posts()) : $beauty_related->the_post(); ?><li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li><?php endwhile; ?></ul></div><?php endif; wp_reset_postdata(); ?>
+   <div class="bv-side-card bv-spa-journey">
+    <span class="bv-spa-journey__eyebrow">BEAUTY SPA</span>
+    <h3>Hành trình chăm sóc</h3>
+    <p class="bv-spa-journey__intro">Tận hưởng trải nghiệm chăm sóc và thư giãn theo từng bước.</p>
+
+    <div class="bv-spa-journey__step">
+      <span class="bv-spa-journey__number">01</span>
+      <div>
+        <strong>Tư vấn cá nhân</strong>
+        <p>Lắng nghe nhu cầu và mong muốn của bạn.</p>
+      </div>
+    </div>
+
+    <div class="bv-spa-journey__step">
+      <span class="bv-spa-journey__number">02</span>
+      <div>
+        <strong>Trải nghiệm liệu trình</strong>
+        <p>Thực hiện dịch vụ với quy trình phù hợp.</p>
+      </div>
+    </div>
+
+    <div class="bv-spa-journey__step">
+      <span class="bv-spa-journey__number">03</span>
+      <div>
+        <strong>Chăm sóc sau dịch vụ</strong>
+        <p>Hướng dẫn chăm sóc và duy trì tại nhà.</p>
+      </div>
+    </div>
+
+    <div class="bv-spa-journey__footer">
+      BEAUTY IS A JOURNEY, NOT A DESTINATION
+    </div>
+  </div>
  </aside>
 </main>
 <?php endwhile; get_footer(); ?>

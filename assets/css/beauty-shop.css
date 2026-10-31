@@ -1,0 +1,257 @@
+/* Beauty Spa – trang Cửa hàng. Mọi luật đều nằm trong .bv-shop (chỉ nạp trên archive spa_product / taxonomy spa_product_cat). */
+.bv-shop{--bvs-cream:#F8F5F0;--bvs-beige:#EDE3D6;--bvs-mocha:#765747;--bvs-dark:#49372D;--bvs-white:#FFFFFF;--bvs-gold:#C9A96E;--bvs-gold-deep:#A98445;--bvs-line:#E6DACB;--bvs-muted:#7A685C;--bvs-shadow:0 6px 22px rgba(73,55,45,.07);--bvs-shadow-hover:0 14px 34px rgba(73,55,45,.13);
+ background:var(--bvs-cream);color:var(--bvs-dark);font-family:var(--font-sans);line-height:1.55;padding-bottom:72px}
+.bv-shop *,.bv-shop *::before,.bv-shop *::after{box-sizing:border-box}
+.bv-shop a{color:inherit;text-decoration:none}
+.bv-shop ul{list-style:none;margin:0;padding:0}
+.bv-shop h1,.bv-shop h2,.bv-shop h3,.bv-shop p{margin:0}
+.bv-shop .bvs-wrap{width:min(1280px,calc(100% - 40px));margin-inline:auto}
+.bv-shop :focus-visible{outline:2px solid var(--bvs-mocha);outline-offset:2px}
+
+/* ---------- Nút ---------- */
+.bv-shop .bvs-btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:42px;padding:0 20px;border-radius:999px;border:1px solid var(--bvs-mocha);font:600 13.5px/1.2 var(--font-sans);text-align:center;cursor:pointer;transition:all .3s ease;white-space:nowrap;text-transform:none;letter-spacing:0;margin:0}
+.bv-shop .bvs-btn:hover,.bv-shop .bvs-card__actions>*:hover{transform:translateY(-2px);box-shadow:0 4px 10px rgba(139,94,60,.2)}
+.bv-shop .bvs-btn--solid{background:var(--bvs-dark);border-color:var(--bvs-dark);color:var(--bvs-white)}
+.bv-shop .bvs-btn--solid:hover{background:var(--bvs-mocha);border-color:var(--bvs-mocha);color:var(--bvs-white)}
+.bv-shop .bvs-btn--ghost{background:var(--bvs-white);color:var(--bvs-mocha)}
+.bv-shop .bvs-btn--ghost:hover{background:var(--bvs-mocha);color:var(--bvs-white)}
+
+/* ---------- Banner (thấp, thấy sản phẩm ngay) ---------- */
+.bv-shop .bvs-hero{position:relative;overflow:hidden;background:linear-gradient(100deg,var(--bvs-beige) 0%,#F1E8DC 60%,#EFE5D8 100%)}
+.bv-shop .bvs-hero__inner{position:relative;z-index:1;display:flex;align-items:center;min-height:300px;padding-block:40px}
+.bv-shop .bvs-hero__copy{max-width:520px;display:flex;flex-direction:column;align-items:flex-start;gap:16px}
+.bv-shop .bvs-hero__title{font-family:var(--font-serif);font-weight:600;font-size:40px;line-height:1.2;color:var(--bvs-dark);letter-spacing:0}
+.bv-shop .bvs-hero__title span{display:block}
+.bv-shop .bvs-hero__lead{font-size:16px;line-height:1.7;color:var(--bvs-mocha);max-width:440px}
+.bv-shop .bvs-hero__cta{margin-top:6px;min-height:46px;padding:0 28px}
+.bv-shop .bvs-hero__media{position:absolute;top:0;right:0;bottom:0;width:54%}
+.bv-shop .bvs-hero__media img{width:100%;height:100%;object-fit:cover;object-position:center 58%;
+ -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 34%);mask-image:linear-gradient(90deg,transparent 0,#000 34%)}
+
+/* ---------- Khung 2 cột ---------- */
+.bv-shop .bvs-layout{display:grid;grid-template-columns:260px minmax(0,1fr);gap:32px;align-items:start;padding-top:36px}
+.bv-shop .bvs-side{display:flex;flex-direction:column;gap:20px}
+.bv-shop .bvs-box{background:var(--bvs-white);border:1px solid var(--bvs-line);border-radius:18px;box-shadow:var(--bvs-shadow);padding:22px 18px}
+.bv-shop .bvs-box__title{font-family:var(--font-serif);font-weight:600;font-size:19px;line-height:1.3;color:var(--bvs-dark);padding:0 4px 14px;margin-bottom:6px;border-bottom:1px solid var(--bvs-line)}
+
+/* Danh mục */
+.bv-shop .bvs-cats{display:flex;flex-direction:column;gap:2px}
+.bv-shop .bvs-cat{display:flex;align-items:center;gap:12px;padding:11px 12px;border-radius:12px;font-size:15px;color:var(--bvs-dark);transition:background-color .2s,color .2s}
+.bv-shop .bvs-cat:hover{background:var(--bvs-cream);color:var(--bvs-mocha)}
+.bv-shop .bvs-cat.is-active{background:var(--bvs-beige);font-weight:700;color:var(--bvs-dark)}
+.bv-shop .bvs-cat__icon{flex:none;color:var(--bvs-mocha)}
+.bv-shop .bvs-cat__name{flex:1;min-width:0}
+.bv-shop .bvs-cat__count{font-size:13px;color:var(--bvs-muted);font-variant-numeric:tabular-nums}
+
+/* Lọc giá */
+.bv-shop .bvs-pricef{display:flex;flex-direction:column;gap:14px;padding-top:10px}
+.bv-shop .bvs-range{position:relative;height:22px;margin:6px 6px 0;--from:0%;--to:100%}
+.bv-shop .bvs-range:empty{display:none}
+.bv-shop .bvs-range::before{content:"";position:absolute;left:0;right:0;top:50%;height:4px;margin-top:-2px;border-radius:4px;background:linear-gradient(90deg,var(--bvs-line) var(--from),var(--bvs-mocha) var(--from),var(--bvs-mocha) var(--to),var(--bvs-line) var(--to))}
+.bv-shop .bvs-range input[type=range]{position:absolute;left:-6px;width:calc(100% + 12px);top:0;height:22px;margin:0;padding:0;background:none;border:0;pointer-events:none;-webkit-appearance:none;appearance:none}
+.bv-shop .bvs-range input[type=range]::-webkit-slider-runnable-track{background:transparent;height:22px}
+.bv-shop .bvs-range input[type=range]::-moz-range-track{background:transparent;height:22px}
+.bv-shop .bvs-range input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;pointer-events:auto;width:18px;height:18px;margin-top:2px;border-radius:50%;background:var(--bvs-white);border:3px solid var(--bvs-gold);box-shadow:0 2px 6px rgba(73,55,45,.25);cursor:grab}
+.bv-shop .bvs-range input[type=range]::-moz-range-thumb{pointer-events:auto;width:12px;height:12px;border-radius:50%;background:var(--bvs-white);border:3px solid var(--bvs-gold);box-shadow:0 2px 6px rgba(73,55,45,.25);cursor:grab}
+.bv-shop .bvs-range input[type=range]:focus-visible::-webkit-slider-thumb{outline:2px solid var(--bvs-mocha);outline-offset:2px}
+.bv-shop .bvs-range input[type=range]:focus-visible::-moz-range-thumb{outline:2px solid var(--bvs-mocha);outline-offset:2px}
+.bv-shop .bvs-price__fields{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.bv-shop .bvs-price__fields label{display:flex;flex-direction:column;gap:5px;font-size:12.5px;color:var(--bvs-muted)}
+.bv-shop .bvs-price__fields input{width:100%;min-width:0;height:40px;padding:0 10px;border:1px solid var(--bvs-line);border-radius:10px;background:var(--bvs-cream);color:var(--bvs-dark);font:500 14px var(--font-sans)}
+.bv-shop .bvs-price__submit{width:100%}
+.bv-shop .bvs-price__reset{align-self:center;font-size:13px;color:var(--bvs-mocha);text-decoration:underline;text-underline-offset:3px}
+
+/* Nổi bật */
+.bv-shop .bvs-feat{display:flex;flex-direction:column}
+.bv-shop .bvs-feat__item{display:flex;gap:14px;align-items:center;padding:14px 4px;border-bottom:1px solid var(--bvs-line)}
+.bv-shop .bvs-feat__item:last-child{border-bottom:0;padding-bottom:0}
+.bv-shop .bvs-feat__img{flex:none;width:68px;height:68px;border-radius:12px;overflow:hidden;background:var(--bvs-beige)}
+.bv-shop .bvs-feat__img img{width:100%;height:100%;object-fit:cover}
+.bv-shop .bvs-feat__info{min-width:0;display:flex;flex-direction:column;gap:3px}
+.bv-shop .bvs-feat__name{font-size:14.5px;font-weight:600;line-height:1.35;color:var(--bvs-dark)}
+.bv-shop .bvs-feat__name:hover{color:var(--bvs-mocha)}
+
+/* Giá (dùng chung) */
+.bv-shop .bvs-price .bv-price-now{font-family:var(--font-sans);font-weight:700;font-size:16px;color:var(--bvs-dark)}
+.bv-shop .bvs-price del{margin-left:6px;font-size:13px;color:var(--bvs-muted)}
+.bv-shop .bvs-price{line-height:1.5}
+.bv-shop .bvs-price .bv-price-contact{font-size:14px;color:var(--bvs-mocha)}
+.bv-shop .bvs-price .bv-sample{display:inline;margin-left:6px;padding:0;background:none;border-radius:0;font-size:11px;color:var(--bvs-muted)}
+.bv-shop .bvs-price--sm .bv-price-now{font-size:15px}
+
+/* ---------- Khu vực chính ---------- */
+.bv-shop .bvs-main{min-width:0;scroll-margin-top:96px}
+.bv-shop .bvs-crumbs{display:flex;flex-wrap:wrap;align-items:center;gap:8px;font-size:13px;color:var(--bvs-muted);margin-bottom:10px}
+.bv-shop .bvs-crumbs a:hover{color:var(--bvs-mocha);text-decoration:underline}
+.bv-shop .bvs-toolbar{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:14px 24px;margin-bottom:22px}
+.bv-shop .bvs-heading{font-family:var(--font-serif);font-weight:600;font-size:32px;line-height:1.2;color:var(--bvs-dark)}
+.bv-shop .bvs-count{margin-top:4px;font-size:14px;color:var(--bvs-muted)}
+.bv-shop .bvs-sort{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--bvs-muted)}
+.bv-shop .bvs-sort select{height:42px;min-width:176px;padding:0 38px 0 14px;border:1px solid var(--bvs-line);border-radius:12px;background:var(--bvs-white) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none' stroke='%23765747' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M1.5 1.5 6 6l4.5-4.5'/%3E%3C/svg%3E") no-repeat right 14px center;-webkit-appearance:none;appearance:none;color:var(--bvs-dark);font:500 14px var(--font-sans);cursor:pointer}
+.bv-shop .bvs-sort__submit{min-height:42px}
+.bv-shop .bvs-sort__submit[hidden]{display:none}
+
+/* ---------- Lưới & thẻ sản phẩm ---------- */
+.bv-shop .bvs-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+.bv-shop .bvs-card{container-type:inline-size;display:flex;flex-direction:column;height:100%;background:var(--bvs-white);border:1px solid var(--bvs-line);border-radius:18px;box-shadow:var(--bvs-shadow);overflow:hidden;transition:box-shadow .25s,transform .25s}
+.bv-shop .bvs-card:hover{box-shadow:var(--bvs-shadow-hover);transform:translateY(-3px)}
+.bv-shop .bvs-card__media{position:relative;aspect-ratio:1/1;background:var(--bvs-beige);overflow:hidden}
+.bv-shop .bvs-card__img{display:block;width:100%;height:100%}
+.bv-shop .bvs-card__img img{width:100%;height:100%;aspect-ratio:1/1;object-fit:cover;display:block}
+.bv-shop .bvs-badge{position:absolute;top:12px;left:12px;z-index:2;padding:4px 11px;border-radius:999px;font:700 12px/1.3 var(--font-sans);background:var(--bvs-white);color:var(--bvs-dark);box-shadow:0 2px 8px rgba(73,55,45,.12)}
+.bv-shop .bvs-badge--sale{background:var(--bvs-dark);color:var(--bvs-white)}
+.bv-shop .bvs-badge--new{background:var(--bvs-gold);color:var(--bvs-dark)}
+.bv-shop .bvs-fav{position:absolute;top:10px;right:10px;z-index:2;width:36px;height:36px;padding:0;border:1px solid var(--bvs-line);border-radius:50%;background:rgba(255,255,255,.94);color:var(--bvs-mocha);font:400 21px/1 var(--font-sans);display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 3px 10px rgba(73,55,45,.12);transition:transform .2s,color .2s,background-color .2s}
+.bv-shop .bvs-fav:hover{transform:scale(1.08)}
+.bv-shop .bvs-fav.is-favorite{background:#fff0f0;border-color:#d51e42;color:#d51e42}
+.bv-shop .bvs-card__body{display:flex;flex-direction:column;flex:1;gap:7px;padding:14px 14px 16px}
+.bv-shop .bvs-chip{align-self:flex-start;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding:3px 10px;border-radius:999px;background:var(--bvs-cream);border:1px solid var(--bvs-line);font-size:12px;color:var(--bvs-mocha)}
+.bv-shop .bvs-card__title{font-family:var(--font-sans);font-weight:700;font-size:15.5px;line-height:1.4;min-height:2.8em;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;color:var(--bvs-dark)}
+.bv-shop .bvs-card__title a:hover{color:var(--bvs-mocha)}
+.bv-shop .bvs-card__size{font-size:13px;color:var(--bvs-muted)}
+.bv-shop .bvs-rating{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--bvs-muted)}
+.bv-shop .bvs-stars{font-size:15px;letter-spacing:1px;line-height:1;background:linear-gradient(90deg,var(--bvs-gold) calc(var(--bvs-r,0)/5*100%),#E3D8C9 calc(var(--bvs-r,0)/5*100%));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+.bv-shop .bvs-card .bvs-price{margin-top:auto;padding-top:4px}
+.bv-shop .bvs-card__actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}
+.bv-shop .bvs-card__actions>*{min-width:0;width:100%;min-height:40px;margin:0;padding:0 8px;display:flex;align-items:center;justify-content:center;border-radius:999px;border:1px solid var(--bvs-mocha);font:600 12.5px/1.2 var(--font-sans);text-align:center;text-transform:none;letter-spacing:0;white-space:nowrap}
+.bv-shop .bvs-card__actions>.btn,.bv-shop .bvs-card__actions>.add_to_cart_button{background:var(--bvs-dark);border-color:var(--bvs-dark);color:var(--bvs-white);cursor:pointer;transition:all .3s ease}
+.bv-shop .bvs-card__actions>.btn:hover,.bv-shop .bvs-card__actions>.add_to_cart_button:hover{background:var(--bvs-mocha);border-color:var(--bvs-mocha);color:var(--bvs-white)}
+.bv-shop .bvs-card__actions>.btn.loading{opacity:.6;pointer-events:none}
+.bv-shop .bvs-card__actions>.bvs-btn--ghost{background:var(--bvs-white);color:var(--bvs-mocha);font-size:12.5px;min-height:40px;padding:0 8px}
+.bv-shop .bvs-card__actions>.bvs-btn--ghost:hover{background:var(--bvs-mocha);color:var(--bvs-white)}
+.bv-shop .bvs-card__actions>.bv-soldout{background:var(--bvs-cream);border-color:var(--bvs-line);color:var(--bvs-muted)}
+/* Thẻ hẹp: xếp hai nút theo chiều dọc để không bị chật/lệch */
+@container (max-width:215px){.bv-shop .bvs-card__actions{grid-template-columns:1fr}}
+
+/* ---------- Phân trang ---------- */
+.bv-shop .bvs-pagination{margin-top:40px}
+.bv-shop .bvs-pagination ul.page-numbers{min-width:0;height:auto;padding:0;border:0;border-radius:0;background:none;transition:none}
+.bv-shop .bvs-pagination .page-numbers{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:8px}
+.bv-shop .bvs-pagination .page-numbers li{margin:0}
+.bv-shop .bvs-pagination a.page-numbers,.bv-shop .bvs-pagination span.page-numbers{display:inline-flex;align-items:center;justify-content:center;min-width:42px;height:42px;padding:0 12px;border-radius:50%;border:1px solid var(--bvs-line);background:var(--bvs-white);color:var(--bvs-dark);font:600 14px var(--font-sans)}
+.bv-shop .bvs-pagination a.page-numbers:hover{border-color:var(--bvs-mocha);color:var(--bvs-mocha)}
+.bv-shop .bvs-pagination span.current{background:var(--bvs-dark);border-color:var(--bvs-dark);color:var(--bvs-white)}
+.bv-shop .bvs-pagination span.dots{border-color:transparent;background:none}
+
+/* ---------- Trạng thái rỗng ---------- */
+.bv-shop .bvs-empty{display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center;padding:56px 24px;background:var(--bvs-white);border:1px solid var(--bvs-line);border-radius:18px}
+.bv-shop .bvs-empty h3{font-family:var(--font-serif);font-size:22px;font-weight:600}
+.bv-shop .bvs-empty p{color:var(--bvs-muted);max-width:420px}
+
+/* ---------- Responsive ---------- */
+@media (max-width:1179px){.bv-shop .bvs-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:900px){
+ .bv-shop .bvs-hero__inner{min-height:0;padding-block:32px 24px;flex-direction:column;align-items:flex-start}
+ .bv-shop .bvs-hero__copy{max-width:none}
+ .bv-shop .bvs-hero__media{position:relative;width:100%;height:170px}
+ .bv-shop .bvs-hero__media img{-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 40%);mask-image:linear-gradient(180deg,transparent 0,#000 40%)}
+ .bv-shop .bvs-layout{display:flex;flex-direction:column;gap:20px;padding-top:24px}
+ .bv-shop .bvs-side{display:contents}
+ .bv-shop .bvs-layout>*{min-width:0;max-width:100%}
+ .bv-shop .bvs-box--cats{order:1;width:100%}
+ .bv-shop .bvs-box--price{order:2;width:100%}
+ .bv-shop .bvs-main{order:3;width:100%}
+ .bv-shop .bvs-box--feat{order:4;width:100%}
+ .bv-shop .bvs-box--cats .bvs-box__title{display:none}
+ .bv-shop .bvs-box--cats{padding:10px}
+ .bv-shop .bvs-cats{flex-direction:row;overflow-x:auto;gap:8px;padding:2px;scrollbar-width:thin}
+ .bv-shop .bvs-cat{flex:none;white-space:nowrap;padding:9px 14px;border:1px solid var(--bvs-line);border-radius:999px}
+ .bv-shop .bvs-cat__icon{display:none}
+ .bv-shop .bvs-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+}
+@media (max-width:560px){
+ .bv-shop .bvs-wrap{width:calc(100% - 28px)}
+ .bv-shop .bvs-grid{gap:12px}
+ .bv-shop .bvs-card__body{padding:12px 12px 14px}
+ .bv-shop .bvs-price__fields{grid-template-columns:1fr 1fr}
+ .bv-shop .bvs-sort{width:100%}
+ .bv-shop .bvs-sort select{flex:1}
+}
+@media (max-width:399px){.bv-shop .bvs-grid{grid-template-columns:1fr}}
+@media (max-width:600px){.bv-shop .bvs-hero__title{font-size:32px}.bv-shop .bvs-heading{font-size:26px}}
+@media (prefers-reduced-motion:reduce){.bv-shop .bvs-btn:hover,.bv-shop .bvs-card__actions>*:hover{transform:none;box-shadow:none}.bv-shop .bvs-card,.bv-shop .bvs-btn,.bv-shop .bvs-fav,.bv-shop .bvs-cat{transition:none}.bv-shop .bvs-card:hover{transform:none}}
+
+
+/* BEAUTY PRODUCT GRID - MATCH SERVICE PAGE */
+.bv-shop .bvs-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 22px !important;
+    align-items: stretch;
+}
+
+.bv-shop .bvs-grid > * {
+    min-width: 0;
+}
+
+.bv-shop .bvs-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    border-radius: 18px;
+    overflow: hidden;
+}
+
+.bv-shop .bvs-card__media {
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+}
+
+.bv-shop .bvs-card__img,
+.bv-shop .bvs-card__img img {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.bv-shop .bvs-card__img img {
+    object-fit: cover;
+}
+
+.bv-shop .bvs-card__body {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}
+
+.bv-shop .bvs-card__title {
+    min-height: 2.8em;
+}
+
+.bv-shop .bvs-card__actions {
+    margin-top: auto;
+}
+
+@media (max-width: 900px) {
+    .bv-shop .bvs-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 16px !important;
+    }
+}
+
+@media (max-width: 560px) {
+    .bv-shop .bvs-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 12px !important;
+    }
+}
+
+@media (max-width: 399px) {
+    .bv-shop .bvs-grid {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+/* ROUNDED PRODUCT SEARCH INPUT */
+.bv-shop .bvsv-search__input {
+    border-radius: 999px !important;
+    padding: 10px 16px !important;
+    border: 1px solid #d8c8ba !important;
+    outline: none;
+    box-shadow: none;
+}
+
+.bv-shop .bvsv-search__input:focus {
+    border-color: #a98265 !important;
+    box-shadow: 0 0 0 3px rgba(169, 130, 101, 0.12) !important;
+}

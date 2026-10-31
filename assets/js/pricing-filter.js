@@ -16,11 +16,11 @@
       if(p==='300to500')matchesPrice=amount>=300000&&amount<=500000;
       if(p==='over500')matchesPrice=amount>500000;
       if(p==='contact')matchesPrice=amount===0;
-      const visible=matchesName&&matchesCategory&&matchesPrice; row.classList.toggle('is-hidden',!visible); if(visible)shown++;
+      const visible=matchesName&&matchesCategory&&matchesPrice;
+      row.classList.toggle('is-hidden',!visible); if(visible)shown++;
     });
-    let empty=document.getElementById('pricing-no-results');
-    if(!shown){if(!empty){empty=document.createElement('p');empty.id='pricing-no-results';empty.className='empty-state';empty.textContent='Không tìm thấy dịch vụ phù hợp. Hãy thử thay đổi bộ lọc.';document.querySelector('.pricing-table-wrap')?.after(empty);}}
-    else if(empty)empty.remove();
+    const empty=document.getElementById('pricing-no-results');
+    if(empty)empty.hidden=shown>0;
   }
   [search,category,price].forEach(el=>{if(el){el.addEventListener('input',filter);el.addEventListener('change',filter);}});
 })();

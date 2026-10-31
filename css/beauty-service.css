@@ -1,0 +1,48 @@
+/* Beauty Spa – trang Dịch vụ. Chỉ là phần BỔ SUNG cho beauty-shop.css (đã định nghĩa sidebar, thẻ, nút, phân trang…).
+   Nạp trên archive spa_service / taxonomy spa_service_cat; mọi luật nằm trong .bv-shop--service. */
+
+/* ---------- Lưới 3 cột (thẻ dịch vụ) ---------- */
+.bv-shop.bv-shop--service .bvs-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+@media (max-width:900px){.bv-shop.bv-shop--service .bvs-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}}
+@media (max-width:560px){.bv-shop.bv-shop--service .bvs-grid{gap:12px}}
+@media (max-width:399px){.bv-shop.bv-shop--service .bvs-grid{grid-template-columns:1fr}}
+
+/* ---------- Nhãn "Bán chạy" ---------- */
+.bv-shop--service .bvs-badge--best{background:var(--bvs-mocha);color:var(--bvs-white)}
+
+/* ---------- Thẻ dịch vụ ---------- */
+.bv-shop--service .bvsv-duration{display:flex;align-items:center;gap:5px}
+.bv-shop--service .bvs-rating--empty .bvs-rating__n{font-size:12.5px}
+.bv-shop--service .bvs-price small{margin-right:2px;font-size:12px;color:var(--bvs-muted)}
+
+/* ---------- Danh mục: dấu tích khi đang chọn ---------- */
+.bv-shop--service .bvs-cat.is-active .bvs-cat__name::after{content:"";display:inline-block;width:6px;height:11px;margin-left:10px;border:solid var(--bvs-gold-deep);border-width:0 2px 2px 0;transform:translateY(-2px) rotate(45deg)}
+
+/* ---------- Thanh công cụ: tiêu đề + (tìm kiếm | sắp xếp) cùng một hàng ---------- */
+.bv-shop--service .bvsv-toolbar{align-items:flex-end}
+.bv-shop--service .bvsv-tools{display:flex;flex-wrap:wrap;align-items:center;justify-content:flex-end;gap:12px 16px}
+.bv-shop--service .bvsv-search{display:flex;align-items:center;gap:8px}
+.bv-shop--service .bvsv-search__input{height:42px;width:220px;min-width:0;padding:0 14px;border:1px solid var(--bvs-line);border-radius:12px;background:var(--bvs-white);color:var(--bvs-dark);font:500 14px var(--font-sans);-webkit-appearance:none;appearance:none}
+.bv-shop--service .bvsv-search__input::placeholder{color:var(--bvs-muted);opacity:.8}
+.bv-shop--service .bvsv-search__input:focus{border-color:var(--bvs-mocha);outline:0;box-shadow:0 0 0 3px rgba(118,87,71,.14)}
+.bv-shop--service .bvsv-search__btn{min-height:42px}
+.bv-shop--service .bvsv-sortbox{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--bvs-muted)}
+.bv-shop--service .bvsv-sortbox label{white-space:nowrap}
+.bv-shop--service .bvsv-sortbox select{height:42px;min-width:176px;padding:0 38px 0 14px;border:1px solid var(--bvs-line);border-radius:12px;background:var(--bvs-white) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none' stroke='%23765747' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M1.5 1.5 6 6l4.5-4.5'/%3E%3C/svg%3E") no-repeat right 14px center;-webkit-appearance:none;appearance:none;color:var(--bvs-dark);font:500 14px var(--font-sans);cursor:pointer}
+.bv-shop--service .bvsv-sortbox .bvs-sort__submit[hidden]{display:none}
+
+@media (max-width:1179px){
+ .bv-shop--service .bvsv-toolbar{align-items:stretch}
+ .bv-shop--service .bvsv-tools{justify-content:flex-start;width:100%}
+}
+@media (max-width:560px){
+ .bv-shop--service .bvsv-tools{flex-direction:column;align-items:stretch}
+ .bv-shop--service .bvsv-search{width:100%}
+ .bv-shop--service .bvsv-search__input{flex:1;width:auto}
+ .bv-shop--service .bvsv-sortbox{width:100%}
+ .bv-shop--service .bvsv-sortbox select{flex:1}
+}
+
+/* ---------- Banner dịch vụ: tiêu đề một dòng ---------- */
+.bv-shop--service .bvs-hero__title{font-size:40px}
+@media (max-width:600px){.bv-shop--service .bvs-hero__title{font-size:32px}}

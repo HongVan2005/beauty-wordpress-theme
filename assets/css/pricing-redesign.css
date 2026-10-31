@@ -1,0 +1,285 @@
+/* Pricing page redesign – warm ivory, champagne gold, soft spa styling */
+.beauty-pricing-page{--bpr-ink:#56351f;--bpr-brown:#704727;--bpr-gold:#bd813d;--bpr-pale:#fff6eb;--bpr-line:#efdfcd;--bpr-muted:#8d7967;color:var(--bpr-ink);background:#fffaf4}
+.beauty-pricing-page .container{width:min(1160px,calc(100% - 40px));margin-inline:auto}
+.beauty-pricing-page .bpr-hero{min-height:365px;position:relative;overflow:hidden;background-image:linear-gradient(90deg,rgba(255,247,237,.98) 0%,rgba(255,247,237,.9) 38%,rgba(255,247,237,.12) 78%),var(--bpr-hero-image);background-position:center 43%;background-size:cover}
+.beauty-pricing-page .bpr-hero-inner{min-height:365px;display:flex;align-items:center;padding-top:32px;padding-bottom:32px}
+.beauty-pricing-page .bpr-hero-copy{max-width:570px}
+.beauty-pricing-page .bpr-eyebrow{font-size:11px;letter-spacing:.28em;font-weight:800;color:#9b6935}
+.beauty-pricing-page .bpr-hero h1{font:600 clamp(42px,5vw,66px)/1.08 var(--font-serif,Georgia,serif);letter-spacing:-.025em;color:#57351e;margin:15px 0}
+.beauty-pricing-page .bpr-hero h1 em{font-style:normal;font-size:.72em}
+.beauty-pricing-page .bpr-hero p{font-size:15px;color:#6d5138;margin:0 0 24px;max-width:470px}
+.beauty-pricing-page .bpr-button{display:inline-flex;align-items:center;gap:12px;border:1px solid #b87a36;border-radius:30px;padding:11px 20px;font-size:13px;font-weight:700}
+.beauty-pricing-page .bpr-button-solid{background:linear-gradient(110deg,#c58d4a,#96520f);color:white}
+.beauty-pricing-page .bpr-trust{position:relative;z-index:2;margin-top:-1px;padding:17px 22px;display:grid;grid-template-columns:repeat(4,1fr);background:rgba(255,249,241,.96);border:1px solid #f1e1d0;border-radius:22px;box-shadow:0 10px 30px rgba(126,81,39,.08)}
+.beauty-pricing-page .bpr-trust-item{display:flex;justify-content:center;align-items:center;gap:12px;border-right:1px solid #e9d3bb}
+.beauty-pricing-page .bpr-trust-item:last-child{border:0}
+.beauty-pricing-page .bpr-trust-icon{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:#fff0dd;color:#b87a36;font-size:23px}
+.beauty-pricing-page .bpr-trust-item strong,.beauty-pricing-page .bpr-trust-item small{display:block}
+.beauty-pricing-page .bpr-trust-item strong{font-size:13px;color:#56351f}
+.beauty-pricing-page .bpr-trust-item small{font-size:11px;color:var(--bpr-muted)}
+.beauty-pricing-page .bpr-main{padding-top:20px;padding-bottom:20px}
+.beauty-pricing-page .bpr-tools{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:12px;margin:0 0 18px;padding:15px 18px;background:#fff8ef;border:1px solid var(--bpr-line);border-radius:14px}
+.beauty-pricing-page .bpr-tools label{font-size:11px;font-weight:700;color:#795637}
+.beauty-pricing-page .bpr-tools input,.beauty-pricing-page .bpr-tools select{display:block;width:100%;height:40px;margin-top:5px;padding:8px 12px;border:1px solid #e9d9c8;border-radius:7px;background:#fff;color:#60442c;font-size:12px}
+.beauty-pricing-page .bpr-price-columns{display:grid;grid-template-columns:1.05fr .95fr;gap:18px;align-items:stretch}
+.beauty-pricing-page .bpr-panel,.beauty-pricing-page .bpr-package-section{min-width:0;padding:20px;background:rgba(255,252,247,.96);border:1px solid #f0dfcd;border-radius:22px;box-shadow:0 9px 28px rgba(126,81,39,.075)}
+.beauty-pricing-page .bpr-panel-heading{display:flex;align-items:center;gap:14px;margin-bottom:16px}
+.beauty-pricing-page .bpr-panel-icon,.beauty-pricing-page .bpr-section-icon{width:54px;height:54px;flex:none;border-radius:50%;display:grid;place-items:center;background:linear-gradient(145deg,#fff1dd,#f4d6ae);box-shadow:0 4px 14px rgba(157,100,38,.13);color:#b87931;font-size:25px}
+.beauty-pricing-page .bpr-panel-heading h2,.beauty-pricing-page .bpr-section-heading h2{font:600 27px/1.2 var(--font-serif,Georgia,serif);margin:0 0 4px;color:#58371f}
+.beauty-pricing-page .bpr-panel-heading p,.beauty-pricing-page .bpr-section-heading p{margin:0;color:#88715d;font-size:11px}
+.beauty-pricing-page .bpr-table-scroll{width:100%;overflow-x:auto}
+.beauty-pricing-page .bpr-table{width:100%;min-width:500px;border-collapse:collapse;font-size:11px}
+.beauty-pricing-page .bpr-table th{padding:11px 8px;background:#f8ecdf;color:#68472b;font-size:10px;text-align:left;white-space:nowrap}
+.beauty-pricing-page .bpr-table th:first-child{border-radius:9px 0 0 9px}
+.beauty-pricing-page .bpr-table th:last-child{border-radius:0 9px 9px 0}
+.beauty-pricing-page .bpr-table td{padding:11px 8px;border-bottom:1px solid #f1e7dc;vertical-align:middle}
+.beauty-pricing-page .bpr-table tr:last-child td{border-bottom:0}
+.beauty-pricing-page .bpr-table td:first-child{min-width:145px}
+.beauty-pricing-page .bpr-table td strong{font-size:11px;color:#513722}
+.beauty-pricing-page .bpr-table td small{display:block;max-width:230px;margin-top:3px;color:#9a8877;font-size:9px;line-height:1.4}
+.beauty-pricing-page .bpr-old{color:#a99a8b;text-decoration:line-through;white-space:nowrap}
+.beauty-pricing-page .bpr-price{font-weight:800;color:#a75d17;white-space:nowrap}
+.beauty-pricing-page .bpr-mini-button{display:inline-flex;justify-content:center;align-items:center;padding:6px 11px;border:1px solid #d49a5b;border-radius:30px;background:#fffaf4;color:#87501d;font-size:10px;font-weight:700;white-space:nowrap}
+.beauty-pricing-page .bpr-mini-button:hover{background:#b87a36;color:white}
+.beauty-pricing-page .bpr-help{display:flex;align-items:center;gap:10px;margin-top:14px;padding:12px;border-radius:12px;background:#fff0df}
+.beauty-pricing-page .bpr-help>span{width:36px;height:36px;flex:none;display:grid;place-items:center;border-radius:50%;background:#ffe3c1;color:#b77931;font-size:20px}
+.beauty-pricing-page .bpr-help div{flex:1;min-width:0}
+.beauty-pricing-page .bpr-help strong,.beauty-pricing-page .bpr-help small{display:block}
+.beauty-pricing-page .bpr-help strong{font-size:11px}
+.beauty-pricing-page .bpr-help small{font-size:9px;color:#907a65}
+.beauty-pricing-page .bpr-empty{padding:15px;border-radius:10px;background:#fff5e9;color:#82684f;font-size:12px}
+.beauty-pricing-page .bpr-product-list{display:flex;flex-direction:column}
+.beauty-pricing-page .bpr-product{display:grid;grid-template-columns:58px minmax(0,1fr) auto auto;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid #f1e7dc}
+.beauty-pricing-page .bpr-product:last-child{border-bottom:0}
+.beauty-pricing-page .bpr-product-image{width:58px;height:58px;border-radius:9px;overflow:hidden;background:#f8eee3}
+.beauty-pricing-page .bpr-product-image img{width:100%;height:100%;object-fit:cover}
+.beauty-pricing-page .bpr-product-info{min-width:0}
+.beauty-pricing-page .bpr-product-info span{display:block;color:#a57b50;font-size:9px;margin-bottom:2px}
+.beauty-pricing-page .bpr-product-info strong{display:block;font-size:11px;line-height:1.35}
+.beauty-pricing-page .bpr-product-info small{display:block;color:#988574;font-size:9px;line-height:1.4;margin-top:3px}
+.beauty-pricing-page .bpr-product-price{font-size:11px;font-weight:800;white-space:nowrap}
+.beauty-pricing-page .bpr-product-price del{display:block;color:#a99a8b;font-size:9px;font-weight:400}
+.beauty-pricing-page .bpr-product-price .bv-sample{display:none}
+.beauty-pricing-page .bpr-product-more{display:block;text-align:right;padding:9px 0;color:#97622d;font-size:11px;font-weight:700}
+.beauty-pricing-page .bpr-promo-strip{display:flex;align-items:center;gap:10px;padding:13px;border-radius:13px;background:linear-gradient(100deg,#ffebcf,#f6d7ad)}
+.beauty-pricing-page .bpr-promo-strip>span{font-size:24px}
+.beauty-pricing-page .bpr-promo-strip div{flex:1}
+.beauty-pricing-page .bpr-promo-strip strong,.beauty-pricing-page .bpr-promo-strip small{display:block}
+.beauty-pricing-page .bpr-promo-strip strong{font:600 17px var(--font-serif,Georgia,serif)}
+.beauty-pricing-page .bpr-promo-strip small{font-size:9px}
+.beauty-pricing-page .bpr-promo-strip>a{padding:8px 11px;border-radius:20px;background:#a86720;color:#fff;font-size:10px;font-weight:700;white-space:nowrap}
+.beauty-pricing-page .bpr-package-section{margin-top:18px;padding:18px}
+.beauty-pricing-page .bpr-section-heading{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:13px}
+.beauty-pricing-page .bpr-section-heading>div{display:flex;align-items:center;gap:12px}
+.beauty-pricing-page .bpr-section-icon{width:43px;height:43px;font-size:21px}
+.beauty-pricing-page .bpr-section-heading h2{font-size:23px}
+.beauty-pricing-page .bpr-section-heading>a{font-size:10px;font-weight:700;color:#83552a;white-space:nowrap}
+.beauty-pricing-page .bpr-package-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}
+.beauty-pricing-page .bpr-package-card{min-width:0;overflow:hidden;border:1px solid #efdfcd;border-radius:12px;background:#fffdf9;text-align:center}
+.beauty-pricing-page .bpr-package-image{display:block;height:112px;overflow:hidden;background:#f8eee3}
+.beauty-pricing-page .bpr-package-image img{width:100%;height:100%;object-fit:cover;transition:transform .3s}
+.beauty-pricing-page .bpr-package-card:hover .bpr-package-image img{transform:scale(1.04)}
+.beauty-pricing-page .bpr-package-body{padding:10px 10px 13px}
+.beauty-pricing-page .bpr-package-body h3{font:600 14px/1.3 var(--font-serif,Georgia,serif);margin:0 0 5px}
+.beauty-pricing-page .bpr-package-body p{min-height:28px;margin:0 0 7px;color:#8e7b69;font-size:9px;line-height:1.45}
+.beauty-pricing-page .bpr-package-price{margin:6px 0 9px;font-size:12px;font-weight:800;color:#9e5b1c}
+.beauty-pricing-page .bpr-package-price del{margin-left:5px;color:#a99a8b;font-size:9px;font-weight:400}
+.beauty-pricing-page .bpr-book-button{display:inline-flex;padding:7px 17px;border-radius:30px;background:linear-gradient(110deg,#c58d4a,#a9671d);color:#fff;font-size:10px;font-weight:700}
+.beauty-pricing-page .bpr-note{margin:18px 0 0;padding:13px 16px;border-left:2px solid #c99961;background:#fbf3e9;color:#8d7967;font-size:10px}
+.beauty-pricing-page .bpr-footer{text-align:center;margin-top:8px;padding:32px 20px 36px;background:radial-gradient(ellipse at bottom,#f2d8b8 0%,#fff8ef 70%)}
+.beauty-pricing-page .bpr-footer-brand{font:italic 27px var(--font-serif,Georgia,serif);color:#68452a}
+.beauty-pricing-page .bpr-footer p{margin:10px 0 0;font-size:9px;letter-spacing:.3em;font-weight:800;color:#765638}
+.beauty-pricing-page .pricing-row.is-hidden{display:none}
+.beauty-pricing-page #pricing-no-results[hidden]{display:none}
+@media(max-width:980px){.beauty-pricing-page .bpr-price-columns{grid-template-columns:1fr}.beauty-pricing-page .bpr-product{grid-template-columns:64px minmax(0,1fr) auto auto}.beauty-pricing-page .bpr-product-image{width:64px;height:60px}}
+@media(max-width:680px){
+ .beauty-pricing-page .container{width:calc(100% - 26px)}
+ .beauty-pricing-page .bpr-hero,.beauty-pricing-page .bpr-hero-inner{min-height:330px}
+ .beauty-pricing-page .bpr-hero{background-image:linear-gradient(90deg,rgba(255,247,237,.97),rgba(255,247,237,.82) 58%,rgba(255,247,237,.25)),var(--bpr-hero-image);background-position:58% center}
+ .beauty-pricing-page .bpr-hero h1{font-size:43px}
+ .beauty-pricing-page .bpr-hero h1 em{font-size:.68em}
+ .beauty-pricing-page .bpr-hero p{max-width:290px;font-size:12px}
+ .beauty-pricing-page .bpr-trust{grid-template-columns:1fr 1fr;padding:13px;gap:12px;border-radius:15px}
+ .beauty-pricing-page .bpr-trust-item{justify-content:flex-start;border:0}
+ .beauty-pricing-page .bpr-trust-icon{width:36px;height:36px;font-size:19px}
+ .beauty-pricing-page .bpr-tools{grid-template-columns:1fr;padding:13px}
+ .beauty-pricing-page .bpr-panel{padding:14px}
+ .beauty-pricing-page .bpr-panel-heading h2{font-size:23px}
+ .beauty-pricing-page .bpr-panel-icon{width:45px;height:45px;font-size:21px}
+ .beauty-pricing-page .bpr-product{grid-template-columns:48px minmax(0,1fr) auto;gap:8px}
+ .beauty-pricing-page .bpr-product-image{width:48px;height:48px}
+ .beauty-pricing-page .bpr-product-price{font-size:10px}
+ .beauty-pricing-page .bpr-product .bpr-mini-button{grid-column:3;grid-row:2;padding:5px 9px}
+ .beauty-pricing-page .bpr-package-section{padding:13px}
+ .beauty-pricing-page .bpr-package-grid{gap:7px}
+ .beauty-pricing-page .bpr-package-image{height:78px}
+ .beauty-pricing-page .bpr-package-body{padding:8px 6px 10px}
+ .beauty-pricing-page .bpr-package-body h3{font-size:11px;min-height:29px}
+ .beauty-pricing-page .bpr-package-body p{font-size:8px;min-height:32px}
+ .beauty-pricing-page .bpr-package-price{font-size:10px}
+ .beauty-pricing-page .bpr-book-button{padding:6px 11px;font-size:9px}
+ .beauty-pricing-page .bpr-section-heading h2{font-size:20px}
+ .beauty-pricing-page .bpr-section-heading p{font-size:9px}
+ .beauty-pricing-page .bpr-section-icon{width:36px;height:36px}
+ .beauty-pricing-page .bpr-footer p{letter-spacing:.14em;line-height:1.8}
+}
+
+/* CAN DOI HAI BANG GIA */
+.bpr-price-columns {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: stretch;
+    gap: 18px;
+}
+
+.bpr-services-panel,
+.bpr-products-panel {
+    min-width: 0;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+/* DONG BO FONT GIA */
+.bpr-price,
+.bpr-old,
+.bpr-product-price,
+.bpr-package-price,
+.bpr-package-price del,
+.bpr-table td,
+.bpr-table th,
+.woocommerce-Price-amount,
+.woocommerce-Price-currencySymbol {
+    font-family: var(--font-sans), Arial, sans-serif !important;
+    font-variant-numeric: tabular-nums lining-nums !important;
+    font-feature-settings: "tnum" 1, "lnum" 1 !important;
+    letter-spacing: 0 !important;
+}
+
+.bpr-price,
+.bpr-product-price,
+.bpr-package-price {
+    font-weight: 700 !important;
+    white-space: nowrap;
+}
+
+/* PHAN TRANG SAN PHAM */
+.bpr-pagination {
+    display: flex;
+    justify-content: center;
+    margin: 18px 0;
+}
+
+.bpr-pagination ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 7px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.bpr-pagination a,
+.bpr-pagination span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 34px;
+    min-height: 34px;
+    padding: 5px 10px;
+    border: 1px solid #e6b77e;
+    border-radius: 20px;
+    color: #8b592d;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+.bpr-pagination .current {
+    background: #bd7d3c;
+    color: #fff;
+    border-color: #bd7d3c;
+}
+
+@media (max-width: 767px) {
+    .bpr-price-columns {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+
+/* FIX KHOANG TRANG BANG GIA */
+.beauty-pricing-page .bpr-price-columns {
+    align-items: start !important;
+}
+
+.beauty-pricing-page .bpr-panel {
+    height: auto !important;
+    min-height: 0 !important;
+    align-self: start !important;
+}
+
+.beauty-pricing-page .bpr-products-panel {
+    align-self: start !important;
+    height: fit-content !important;
+}
+
+
+/* FIX CUOI: CAN BANG CHIEU CAO HAI BANG GIA */
+.beauty-pricing-page .bpr-price-columns {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr) !important;
+    align-items: stretch !important;
+}
+
+.beauty-pricing-page .bpr-services-panel,
+.beauty-pricing-page .bpr-products-panel {
+    align-self: stretch !important;
+    height: 100% !important;
+    min-height: 100% !important;
+    box-sizing: border-box !important;
+}
+
+.beauty-pricing-page .bpr-products-panel {
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+@media (max-width: 980px) {
+    .beauty-pricing-page .bpr-price-columns {
+        grid-template-columns: minmax(0, 1fr) !important;
+        align-items: stretch !important;
+    }
+
+    .beauty-pricing-page .bpr-services-panel,
+    .beauty-pricing-page .bpr-products-panel {
+        height: auto !important;
+        min-height: 0 !important;
+    }
+}
+
+
+/* GIU KHUNG UU DAI O DUOI BANG SAN PHAM */
+.beauty-pricing-page .bpr-products-panel {
+    display: flex !important;
+    flex-direction: column !important;
+    height: 100% !important;
+    box-sizing: border-box !important;
+}
+
+.beauty-pricing-page .bpr-products-panel > :last-child {
+    margin-top: auto !important;
+    flex-shrink: 0 !important;
+}
+
+/* Tren dien thoai: khong ep chieu cao */
+@media (max-width: 980px) {
+    .beauty-pricing-page .bpr-products-panel {
+        height: auto !important;
+    }
+
+    .beauty-pricing-page .bpr-products-panel > :last-child {
+        margin-top: 16px !important;
+    }
+}
+

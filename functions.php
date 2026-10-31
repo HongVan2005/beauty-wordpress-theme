@@ -4,7 +4,7 @@
  */
 if (!defined('ABSPATH')) exit;
 
-define('BEAUTY_SPA_VERSION', '9.0.0');
+define('BEAUTY_SPA_VERSION', '9.1.0');
 
 /** Tìm bài theo tiêu đề chính xác (thay cho get_page_by_title đã bị đánh dấu lỗi thời từ WP 6.2). */
 function beauty_find_post_by_title($title, $output = OBJECT, $post_type = 'page') {
@@ -133,9 +133,47 @@ function beaute_spa_setup() {
 add_action('after_setup_theme', 'beaute_spa_setup');
 
 function beaute_spa_assets() {
-    wp_enqueue_style('beaute-spa-style', get_stylesheet_uri(), array(), BEAUTY_SPA_VERSION);
+    /* Font: Playfair Display (tiêu đề) + Montserrat (nội dung), có hỗ trợ tiếng Việt. Nếu không tải được, CSS tự dùng font có sẵn trong theme. */
+    wp_enqueue_style('beauty-google-fonts', 'https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap', array(), null);
+    wp_enqueue_style('beaute-spa-style', get_stylesheet_uri(), array('beauty-google-fonts'), (string) filemtime(get_stylesheet_directory() . '/style.css')); /* [FIX CACHE] đổi version theo thời gian sửa file */
 }
 add_action('wp_enqueue_scripts', 'beaute_spa_assets');
+/* Trang Giới thiệu (template page-gioi-thieu.php): CSS + JS riêng, chỉ nạp ở trang này.
+ * about-luxury.css (bản cũ) không còn được dùng nữa. */
+function beauty_about_luxury_assets() {
+    if (!is_page('gioi-thieu')) return;
+    wp_enqueue_style('beauty-about-fonts', 'https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap', array(), null);
+    wp_enqueue_style(
+        'beauty-about-page',
+        get_template_directory_uri() . '/assets/css/about-page.css',
+        array('beaute-spa-style', 'beauty-about-fonts'),
+        file_exists(get_template_directory() . '/assets/css/about-page.css') ? (string) filemtime(get_template_directory() . '/assets/css/about-page.css') : '2.0.0'
+    );
+    wp_enqueue_script(
+        'beauty-about-page',
+        get_template_directory_uri() . '/assets/js/about-page.js',
+        array(),
+        file_exists(get_template_directory() . '/assets/js/about-page.js') ? (string) filemtime(get_template_directory() . '/assets/js/about-page.js') : '2.0.0',
+        true
+    );
+}
+add_action('wp_enqueue_scripts', 'beauty_about_luxury_assets', 99);
+
+/* Đánh dấu mục "Về chúng tôi/Giới thiệu" trên menu bằng gạch chân nâu khi đang ở trang này */
+function beauty_about_body_class($classes) {
+    if (is_page('gioi-thieu')) $classes[] = 'ba-about-active';
+    return $classes;
+}
+add_filter('body_class', 'beauty_about_body_class');
+
+function beauty_fonts_resource_hints($urls, $relation_type) {
+    if ('preconnect' === $relation_type) {
+        $urls[] = 'https://fonts.googleapis.com';
+        $urls[] = array('href' => 'https://fonts.gstatic.com', 'crossorigin' => 'anonymous');
+    }
+    return $urls;
+}
+add_filter('wp_resource_hints', 'beauty_fonts_resource_hints', 10, 2);
 
 function beaute_spa_pricing_assets() {
     if (is_page_template('page-templates/template-pricing.php')) {
@@ -237,9 +275,19 @@ function beaute_spa_customize_register($wp_customize) {
 add_action('customize_register','beaute_spa_customize_register');
 
 function beaute_spa_price($post_id, $sale = false) {
-    $value = get_post_meta($post_id, $sale ? '_spa_sale_price' : '_spa_price', true);
-    if ($value === '' || $value === false || (int)$value <= 0) return '';
-    return number_format_i18n((int)$value,0).' đ';
+    $regular = (int) get_post_meta($post_id, '_spa_price', true);
+    $discount = (int) get_post_meta($post_id, '_spa_sale_price', true);
+
+    // Chỉ coi là giá ưu đãi khi có đủ giá gốc và giá ưu đãi thấp hơn giá gốc.
+    // Nhờ vậy bảng giá, thẻ dịch vụ, gói liệu trình và trang chi tiết luôn hiển thị cùng một giá hiệu lực.
+    if ($sale) {
+        if ($regular <= 0 || $discount <= 0 || $discount >= $regular) return '';
+        $value = $discount;
+    } else {
+        $value = $regular;
+    }
+    if ($value <= 0) return '';
+    return number_format_i18n($value, 0) . ' đ';
 }
 
 function beaute_spa_booking_shortcode() {
@@ -735,6 +783,8 @@ require_once get_template_directory() . '/inc/shop.php';
 require_once get_template_directory() . '/inc/compat.php';
 require_once get_template_directory() . '/inc/fixes.php'; /* [FIX 1][FIX 3] */
 require_once get_template_directory() . '/inc/v9-fixes.php'; /* [V9 FIX 1-4] ảnh sản phẩm, giới thiệu, album, combo */
+require_once get_template_directory() . '/inc/shop-page.php'; /* [SHOP PAGE] giao diện trang Cửa hàng */
+require_once get_template_directory() . '/inc/service-page.php'; /* [SERVICE PAGE] giao diện trang Dịch vụ (dùng chung style trang Cửa hàng) */
 
 
 /* Beauty UX enhancements: wishlist, robust image fallback, and shared navigation. */
@@ -790,3 +840,181 @@ function beauty_ensure_wishlist_page() {
     }
 }
 add_action('after_switch_theme','beauty_ensure_wishlist_page');
+
+/* Google Font - Great Vibes for About Hero */
+function beauty_about_great_vibes_font() {
+    wp_enqueue_style(
+        'beauty-great-vibes',
+        'https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap',
+        array(),
+        null
+    );
+}
+add_action('wp_enqueue_scripts', 'beauty_about_great_vibes_font', 20);
+
+
+/* ==========================================================================
+   [SLIDER SẢN PHẨM] Swiper + lọc danh mục cho section "Sản phẩm Beauty" (chỉ trang chủ)
+   - Swiper nạp từ jsDelivr (đã ghim phiên bản). Muốn tự host: xem ghi chú ở cuối file này.
+   ========================================================================== */
+function beauty_products_slider_assets() {
+    if (!is_front_page()) return;
+
+    $dir = get_template_directory();
+    $uri = get_template_directory_uri();
+    $css = $dir . '/assets/css/beauty-product-slider.css';
+    $js  = $dir . '/assets/js/beauty-product-slider.js';
+    $ver = '11.1.14';
+
+    wp_enqueue_style('beauty-swiper', 'https://cdn.jsdelivr.net/npm/swiper@' . $ver . '/swiper-bundle.min.css', array(), $ver);
+    wp_enqueue_script('beauty-swiper', 'https://cdn.jsdelivr.net/npm/swiper@' . $ver . '/swiper-bundle.min.js', array(), $ver, true);
+
+    wp_enqueue_style(
+        'beauty-product-slider',
+        $uri . '/assets/css/beauty-product-slider.css',
+        array('beauty-swiper', 'beaute-spa-style', 'beauty-v9'),
+        file_exists($css) ? (string) filemtime($css) : BEAUTY_SPA_VERSION
+    );
+    wp_enqueue_script(
+        'beauty-product-slider',
+        $uri . '/assets/js/beauty-product-slider.js',
+        array('beauty-swiper'),
+        file_exists($js) ? (string) filemtime($js) : BEAUTY_SPA_VERSION,
+        true
+    );
+}
+add_action('wp_enqueue_scripts', 'beauty_products_slider_assets', 110);
+/* Tự host Swiper (không phụ thuộc CDN): tải swiper-bundle.min.css/.js vào assets/vendor/swiper/
+   rồi đổi 2 URL ở trên thành $uri . '/assets/vendor/swiper/swiper-bundle.min.(css|js)'. */
+
+// BEAUTY SPA - CONTACT CSS BANNER
+add_action('wp_footer', function () {
+    return; // Banner cũ đã được thay bằng contact-banner.php
+
+    if (!is_page()) return;
+
+    $title = get_the_title();
+    if (mb_stripos($title, 'liên hệ') === false && mb_stripos($title, 'contact') === false) return;
+    ?>
+    <style>
+    /* An banner anh loi cu */
+    .beauty-contact-hero {
+        display: none !important;
+    }
+
+    /* Banner lien he moi */
+    .beauty-contact-banner-css {
+        position: relative;
+        width: min(1200px, calc(100% - 40px));
+        margin: 28px auto 30px;
+        padding: 48px 56px;
+        box-sizing: border-box;
+        overflow: hidden;
+        border-radius: 20px;
+        background:
+            radial-gradient(circle at 90% 15%, rgba(255,255,255,.75), transparent 28%),
+            linear-gradient(115deg, #f8e6cf 0%, #f4d8b5 52%, #edc99f 100%);
+        border: 1px solid #ecd4b8;
+        box-shadow: 0 10px 28px rgba(112,75,43,.09);
+        color: #604638;
+    }
+
+    .beauty-contact-banner-css:before {
+        content: "✦";
+        position: absolute;
+        right: 10%;
+        top: 8px;
+        font-size: 115px;
+        line-height: 1;
+        color: rgba(255,255,255,.42);
+    }
+
+    .beauty-contact-banner-css:after {
+        content: "";
+        position: absolute;
+        width: 220px;
+        height: 220px;
+        right: -65px;
+        bottom: -145px;
+        border: 1px solid rgba(255,255,255,.55);
+        border-radius: 50%;
+        box-shadow: 0 0 0 22px rgba(255,255,255,.10),
+                    0 0 0 44px rgba(255,255,255,.08);
+    }
+
+    .beauty-contact-banner-css .contact-eyebrow {
+        position: relative;
+        z-index: 1;
+        margin: 0 0 10px;
+        color: #a8794e;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+    }
+
+    .beauty-contact-banner-css h2 {
+        position: relative;
+        z-index: 1;
+        margin: 0 0 12px;
+        color: #624536;
+        font-family: Georgia, serif;
+        font-size: clamp(25px, 3vw, 38px);
+        font-weight: 500;
+        line-height: 1.25;
+    }
+
+    .beauty-contact-banner-css p {
+        position: relative;
+        z-index: 1;
+        max-width: 570px;
+        margin: 0;
+        color: #806957;
+        font-size: 14px;
+        line-height: 1.8;
+    }
+
+    @media(max-width: 768px) {
+        .beauty-contact-banner-css {
+            width: calc(100% - 28px);
+            margin: 18px auto 22px;
+            padding: 32px 24px;
+            border-radius: 15px;
+        }
+        .beauty-contact-banner-css:before {
+            right: 7%;
+            font-size: 75px;
+        }
+    }
+    </style>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        if (document.querySelector('.beauty-contact-banner-css')) return;
+
+        const banner = document.createElement('section');
+        banner.className = 'beauty-contact-banner-css';
+        banner.innerHTML = `
+            <div class="contact-eyebrow">BEAUTY SPA · CONTACT</div>
+            <h2>Chúng tôi luôn sẵn sàng lắng nghe</h2>
+            <p>Hãy chia sẻ mong muốn của bạn. Beauty Spa sẽ đồng hành và tư vấn liệu trình chăm sóc phù hợp để bạn luôn tự tin, rạng rỡ.</p>
+        `;
+
+        const header = document.querySelector(
+            '#masthead, header.site-header, .site-header, header'
+        );
+
+        if (header) {
+            header.insertAdjacentElement('afterend', banner);
+        }
+    });
+    </script>
+    <?php
+}, 100);
+// END BEAUTY SPA - CONTACT CSS BANNER
+
+
+
+
+// BEAUTY SPA - CONTACT BANNER NEW
+require_once get_stylesheet_directory() . '/contact-banner.php';

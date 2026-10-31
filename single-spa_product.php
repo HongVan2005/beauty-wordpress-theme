@@ -26,7 +26,39 @@ $beauty_rows = array('Thương hiệu' => get_post_meta($beauty_id, '_p_brand', 
   <section class="bv-block"><h2>Thành phần</h2><?php $beauty_ing = trim((string) get_post_meta($beauty_id, '_p_ingredients', true)); echo $beauty_ing ? '<p>' . nl2br(esc_html($beauty_ing)) . '</p>' : '<p class="muted">Chưa cập nhật. Thành phần cần được xác nhận từ nhà cung cấp trước khi mở bán.</p>'; ?></section>
   <?php foreach (array('_p_usage' => 'Hướng dẫn sử dụng', '_p_caution' => 'Lưu ý, bảo quản và cảnh báo') as $beauty_key => $beauty_title) { $beauty_html = beauty_lines(get_post_meta($beauty_id, $beauty_key, true)); if ($beauty_html) echo '<section class="bv-block"><h2>' . esc_html($beauty_title) . '</h2>' . $beauty_html . '</section>'; } ?>
  </div>
- <aside class="bv-detail-side"><div class="bv-side-card bv-side-cta"><h3>Cần tư vấn chọn sản phẩm?</h3><p>Nhân viên có thể gợi ý sản phẩm theo nhu cầu chăm sóc của bạn.</p><a class="btn" href="<?php echo esc_url(home_url('/lien-he/')); ?>">Liên hệ tư vấn</a></div></aside>
+ <aside class="bv-detail-side">
+  <div class="bv-side-card bv-side-cta bv-spa-intro">
+    <span class="bv-spa-intro__eyebrow">BEAUTY SPA</span>
+    <h3>Chăm sóc làn da, nâng niu vẻ đẹp</h3>
+    <p class="bv-spa-intro__desc">Đồng hành cùng bạn trên hành trình chăm sóc và nuôi dưỡng làn da khỏe đẹp mỗi ngày.</p>
+
+    <div class="bv-spa-intro__item">
+      <span class="bv-spa-intro__icon">01</span>
+      <div>
+        <strong>Sản phẩm chọn lọc</strong>
+        <p>Ưu tiên chất lượng và nguồn gốc rõ ràng.</p>
+      </div>
+    </div>
+
+    <div class="bv-spa-intro__item">
+      <span class="bv-spa-intro__icon">02</span>
+      <div>
+        <strong>Chăm sóc phù hợp</strong>
+        <p>Hướng dẫn lựa chọn sản phẩm theo nhu cầu làn da.</p>
+      </div>
+    </div>
+
+    <div class="bv-spa-intro__item">
+      <span class="bv-spa-intro__icon">03</span>
+      <div>
+        <strong>Đồng hành tận tâm</strong>
+        <p>Luôn sẵn sàng hỗ trợ bạn trong quá trình chăm sóc da.</p>
+      </div>
+    </div>
+
+    <div class="bv-spa-intro__footer">BEAUTY IS A JOURNEY, NOT A DESTINATION</div>
+  </div>
+</aside>
 </main>
 <?php
 $beauty_rel = new WP_Query(array('post_type' => 'spa_product', 'posts_per_page' => 4, 'post__not_in' => array($beauty_id), 'post_status' => 'publish', 'tax_query' => ($beauty_terms && !is_wp_error($beauty_terms)) ? array(array('taxonomy' => 'spa_product_cat', 'field' => 'term_id', 'terms' => wp_list_pluck($beauty_terms, 'term_id'))) : array()));

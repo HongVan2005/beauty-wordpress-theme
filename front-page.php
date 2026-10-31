@@ -27,9 +27,19 @@
  <div class="section-cta"><a class="btn btn-outline" href="<?php echo esc_url(get_post_type_archive_link('spa_service')); ?>">Xem tất cả dịch vụ</a></div>
 </div></section>
 
-<!-- Banner quảng cáo Beauty Spa: tràn toàn chiều ngang, không gắn liên kết -->
-<section class="bv-promo-banner-section" aria-label="Banner quảng cáo Beauty Spa">
- <img class="bv-promo-banner-image" src="<?php echo esc_url(get_stylesheet_directory_uri() . '/assets/images/beauty-personalized-spa-banner.jpg'); ?>" alt="Beauty Spa – Chọn liệu trình Spa theo nhu cầu cá nhân, tư vấn chuyên sâu và chăm sóc an toàn" width="1300" height="296" loading="lazy" decoding="async">
+<!-- BEAUTY: Banner tu van lieu trinh - dat giua dich vu noi bat va combo -->
+<section class="beauty-personal-banner-section" aria-label="Tư vấn liệu trình spa theo nhu cầu cá nhân">
+    <div class="beauty-personal-banner-wrap">
+        <div class="beauty-personal-banner-link">
+            <img
+                class="beauty-personal-banner-image"
+                src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/beauty-personalized-spa-banner.jpg'); ?>"
+                alt="Beauty Spa - Chọn liệu trình spa theo nhu cầu cá nhân"
+                loading="lazy"
+                decoding="async"
+            >
+        </div>
+    </div>
 </section>
 
 <?php $beauty_pk = new WP_Query(array('post_type' => 'spa_package', 'posts_per_page' => 3, 'post_status' => 'publish', 'orderby' => 'menu_order title', 'order' => 'ASC', 'no_found_rows' => true)); if ($beauty_pk->have_posts()) : ?>
@@ -44,15 +54,68 @@
 
 <section class="section section-soft bv-section" id="san-pham"><div class="container">
  <div class="section-heading"><span class="eyebrow">Chăm sóc tại nhà</span><h2>Sản phẩm Beauty</h2><p>Tiếp nối trải nghiệm tại spa bằng thói quen chăm sóc phù hợp mỗi ngày.</p></div>
- <?php if (beauty_use_woocommerce()) :
-  $beauty_wc = wc_get_products(array('status' => 'publish', 'limit' => 8, 'orderby' => 'date', 'order' => 'DESC'));
-  if ($beauty_wc) : ?><div class="bv-prod-grid"><?php foreach ($beauty_wc as $beauty_p) : ?><article class="bv-prod"><a class="bv-prod-media" href="<?php echo esc_url($beauty_p->get_permalink()); ?>" tabindex="-1" aria-hidden="true"><?php echo wp_kses_post($beauty_p->get_image('woocommerce_thumbnail')); ?></a><div class="bv-prod-body"><h3><a href="<?php echo esc_url($beauty_p->get_permalink()); ?>"><?php echo esc_html($beauty_p->get_name()); ?></a></h3><div class="bv-price"><?php echo wp_kses_post($beauty_p->get_price_html()); ?></div><a class="btn btn-outline" href="<?php echo esc_url($beauty_p->get_permalink()); ?>">Xem chi tiết</a></div></article><?php endforeach; ?></div><?php else : ?><p class="empty-state">Chưa có sản phẩm WooCommerce.</p><?php endif;
+ <?php
+ /* [SLIDER SẢN PHẨM] Gom sản phẩm + danh mục -> render 1 hàng Swiper, lọc danh mục bằng JS tại chỗ.
+    Mỗi slide mang data-cats="slug-1 slug-2" để JS lọc; bộ lọc chỉ liệt kê danh mục THỰC SỰ có sản phẩm. */
+ $beauty_use_wc = beauty_use_woocommerce();
+ $beauty_tax    = $beauty_use_wc ? 'product_cat' : 'spa_product_cat';
+ $beauty_limit  = 16; // số sản phẩm nạp vào slider (đổi tại đây)
+ $beauty_slides = array();
+ $beauty_used   = array();
+
+ if ($beauty_use_wc) :
+  $beauty_wc = wc_get_products(array('status' => 'publish', 'limit' => $beauty_limit, 'orderby' => 'date', 'order' => 'DESC'));
+  foreach ((array) $beauty_wc as $beauty_p) :
+   $beauty_slugs = wp_get_post_terms($beauty_p->get_id(), $beauty_tax, array('fields' => 'slugs'));
+   $beauty_slugs = is_wp_error($beauty_slugs) ? array() : $beauty_slugs;
+   ob_start(); ?>
+   <article class="bv-prod"><a class="bv-prod-media" href="<?php echo esc_url($beauty_p->get_permalink()); ?>" tabindex="-1" aria-hidden="true"><?php echo wp_kses_post($beauty_p->get_image('woocommerce_thumbnail')); ?></a><div class="bv-prod-body"><h3><a href="<?php echo esc_url($beauty_p->get_permalink()); ?>"><?php echo esc_html($beauty_p->get_name()); ?></a></h3><div class="bv-price"><?php echo wp_kses_post($beauty_p->get_price_html()); ?></div><a class="btn btn-outline" href="<?php echo esc_url($beauty_p->get_permalink()); ?>">Xem chi tiết</a></div></article>
+   <?php
+   $beauty_slides[] = array('cats' => $beauty_slugs, 'html' => ob_get_clean());
+  endforeach;
  else :
-  $beauty_pq = new WP_Query(array('post_type' => 'spa_product', 'posts_per_page' => 8, 'post_status' => 'publish', 'orderby' => 'menu_order title', 'order' => 'ASC', 'no_found_rows' => true));
-  $beauty_pcats = get_terms(array('taxonomy' => 'spa_product_cat', 'hide_empty' => true));
-  if (!is_wp_error($beauty_pcats) && $beauty_pcats) : ?><div class="bv-chips-row center"><?php foreach ($beauty_pcats as $beauty_pc) : ?><a class="bv-pill" href="<?php echo esc_url(get_term_link($beauty_pc)); ?>"><?php echo esc_html($beauty_pc->name); ?></a><?php endforeach; ?></div><?php endif;
-  if ($beauty_pq->have_posts()) : ?><div class="bv-prod-grid"><?php while ($beauty_pq->have_posts()) : $beauty_pq->the_post(); get_template_part('template-parts/product-card'); endwhile; ?></div><?php else : ?><p class="empty-state">Chưa có sản phẩm. Thêm trong WordPress Admin → Sản phẩm (cửa hàng Beauty).</p><?php endif; wp_reset_postdata();
- endif; ?>
+  $beauty_pq = new WP_Query(array('post_type' => 'spa_product', 'posts_per_page' => $beauty_limit, 'post_status' => 'publish', 'orderby' => 'menu_order title', 'order' => 'ASC', 'no_found_rows' => true));
+  while ($beauty_pq->have_posts()) :
+   $beauty_pq->the_post();
+   $beauty_slugs = wp_get_post_terms(get_the_ID(), $beauty_tax, array('fields' => 'slugs'));
+   $beauty_slugs = is_wp_error($beauty_slugs) ? array() : $beauty_slugs;
+   ob_start();
+   get_template_part('template-parts/product-card');
+   $beauty_slides[] = array('cats' => $beauty_slugs, 'html' => ob_get_clean());
+  endwhile;
+  wp_reset_postdata();
+ endif;
+
+ foreach ($beauty_slides as $beauty_s) { foreach ($beauty_s['cats'] as $beauty_c) { $beauty_used[$beauty_c] = true; } }
+ $beauty_filters = array();
+ $beauty_terms = get_terms(array('taxonomy' => $beauty_tax, 'hide_empty' => true));
+ if (!is_wp_error($beauty_terms)) {
+  foreach ($beauty_terms as $beauty_t) { if (isset($beauty_used[$beauty_t->slug])) { $beauty_filters[] = $beauty_t; } }
+ }
+
+ if ($beauty_slides) : ?>
+ <div class="bv-products-block" data-bv-products>
+  <?php if (count($beauty_filters) > 1) : ?>
+  <div class="bv-pfilter" data-bv-pfilter role="group" aria-label="Lọc sản phẩm theo danh mục">
+   <button type="button" class="bv-pill active" data-filter="all" aria-pressed="true">Tất cả</button>
+   <?php foreach ($beauty_filters as $beauty_f) : ?><button type="button" class="bv-pill" data-filter="<?php echo esc_attr($beauty_f->slug); ?>" aria-pressed="false"><?php echo esc_html($beauty_f->name); ?></button><?php endforeach; ?>
+  </div>
+  <?php endif; ?>
+  <div class="bv-pslider" data-bv-pslider>
+   <div class="bv-pslider-stage">
+    <div class="swiper bv-pslider-swiper">
+     <div class="swiper-wrapper">
+      <?php foreach ($beauty_slides as $beauty_s) : ?><div class="swiper-slide" data-cats="<?php echo esc_attr(implode(' ', $beauty_s['cats'])); ?>"><?php echo $beauty_s['html']; // phpcs:ignore WordPress.Security.EscapeOutput -- HTML đã được escape trong template ?></div><?php endforeach; ?>
+     </div>
+    </div>
+    <button type="button" class="bv-pslider-btn bv-pslider-prev" aria-label="Sản phẩm trước"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></button>
+    <button type="button" class="bv-pslider-btn bv-pslider-next" aria-label="Sản phẩm tiếp theo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></button>
+   </div>
+   <div class="bv-pslider-dots" aria-label="Chọn trang sản phẩm"></div>
+   <p class="empty-state bv-pslider-empty" hidden>Chưa có sản phẩm trong danh mục này.</p>
+  </div>
+ </div>
+ <?php else : ?><p class="empty-state">Chưa có sản phẩm. Thêm trong WordPress Admin → Sản phẩm (cửa hàng Beauty).</p><?php endif; ?>
  <div class="section-cta"><a class="btn btn-outline" href="<?php echo esc_url(beauty_shop_url()); ?>">Xem tất cả sản phẩm</a></div>
 </div></section>
 

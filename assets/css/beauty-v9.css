@@ -181,11 +181,23 @@ main>section:last-of-type,main>section:last-child{margin-bottom:0!important}
 @keyframes beauty-marquee{from{transform:translateX(0)}to{transform:translateX(calc(-100% / 6))}}
 @media(max-width:620px){.tb-track{animation-duration:18s!important}.tb-item{padding:0 20px}}
 
+/* BEAUTY - MATCH SERVICE SECTION HEADING SIZES */
+.bsc-head h2,
+#danh-muc-dich-vu-chi-tiet .bsc-head h2,
+.section-soft .section-heading h2 {
+    font-size: 30px !important;
+    line-height: 1.25 !important;
+    font-weight: 600 !important;
+    font-family: var(--beauty-font-heading) !important;
+    margin-top: 8px !important;
+    margin-bottom: 10px !important;
+}
 
-/* Banner quảng cáo Beauty Spa – bảng màu kem, vàng champagne và xanh olive */
-.bv-promo-banner-section{padding:8px 0 22px!important;margin:0!important;background:linear-gradient(180deg,#fffdf8 0%,#f8f1e6 100%)}
-.bv-promo-banner-link{display:block;overflow:hidden;border:1px solid rgba(183,145,82,.32);border-radius:16px;box-shadow:0 12px 32px rgba(92,67,42,.13);background:#f8f1e6;transition:transform .25s ease,box-shadow .25s ease}
-.bv-promo-banner-link:hover{transform:translateY(-2px);box-shadow:0 16px 36px rgba(92,67,42,.18)}
-.bv-promo-banner-link img{display:block;width:100%;height:auto;aspect-ratio:1300/296;object-fit:cover}
-@media(max-width:620px){.bv-promo-banner-section{padding:4px 0 16px!important}.bv-promo-banner-link{border-radius:10px}.bv-promo-banner-link img{aspect-ratio:1.7/1;object-position:center}}
-@media(prefers-reduced-motion:reduce){.bv-promo-banner-link{transition:none}.bv-promo-banner-link:hover{transform:none}}
+@media (max-width: 767px) {
+    .bsc-head h2,
+    #danh-muc-dich-vu-chi-tiet .bsc-head h2,
+    .section-soft .section-heading h2 {
+        font-size: 22px !important;
+        line-height: 1.3 !important;
+    }
+}

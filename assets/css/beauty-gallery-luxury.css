@@ -1,0 +1,223 @@
+/* Beauty Spa Luxury Gallery - scoped styles */
+.beauty-gallery-page {
+  --bg: #f8f3ec;
+  --cream: #fcf9f4;
+  --brown: #513321;
+  --brown-2: #76543c;
+  --gold: #b89568;
+  --muted: #8b7b6c;
+  color: var(--brown);
+  background: var(--cream);
+  font-family: inherit;
+}
+.beauty-gallery-page * { box-sizing: border-box; }
+.beauty-gallery-container { width: min(1180px, calc(100% - 48px)); margin-inline: auto; }
+.beauty-gallery-hero { min-height: 330px; position: relative; display: flex; align-items: center; overflow: hidden; background: #e9ddcf; }
+.beauty-gallery-hero__image, .beauty-gallery-hero__veil { position: absolute; inset: 0; }
+.beauty-gallery-hero__image img { width: 100%; height: 100%; object-fit: cover; object-position: center 43%; }
+.beauty-gallery-hero__veil { background: linear-gradient(90deg, rgba(250,245,237,.97) 0%, rgba(250,245,237,.88) 34%, rgba(250,245,237,.15) 70%, rgba(250,245,237,0) 100%); }
+.beauty-gallery-hero__content { position: relative; z-index: 1; padding-block: 38px; }
+.beauty-gallery-breadcrumb { display: flex; gap: 10px; align-items: center; color: #826d5a; font-size: 12px; margin-bottom: 28px; }
+.beauty-gallery-breadcrumb a { color: inherit; text-decoration: none; }
+.beauty-gallery-eyebrow { color: var(--gold); font-size: 10px; letter-spacing: .28em; font-weight: 600; margin: 0 0 12px; }
+.beauty-gallery-hero h1 { font-family: Georgia, 'Times New Roman', serif; font-size: clamp(42px, 5vw, 64px); font-weight: 400; line-height: 1; margin: 0 0 10px; color: var(--brown); }
+.beauty-gallery-hero__lead { font-family: Georgia, serif; font-size: 20px; margin: 0 0 12px; }
+.beauty-gallery-flourish { color: var(--gold); display: block; margin: 12px 0; font-size: 13px; letter-spacing: .12em; }
+.beauty-gallery-hero__text { color: #77695d; font-size: 14px; line-height: 1.8; margin: 0; }
+.beauty-gallery-featured { padding-block: 64px 58px; }
+.beauty-gallery-section-heading { text-align: center; margin: 0 auto 28px; }
+.beauty-gallery-section-heading h2, .beauty-gallery-cta h2 { font-family: Georgia, 'Times New Roman', serif; font-size: clamp(27px, 3.2vw, 38px); font-weight: 400; line-height: 1.2; margin: 0 0 10px; color: var(--brown); }
+.beauty-gallery-section-heading > p:not(.beauty-gallery-eyebrow) { color: var(--muted); line-height: 1.7; font-size: 14px; margin: 0; }
+.beauty-gallery-divider { display: inline-block; color: var(--gold); margin-top: 12px; font-size: 13px; }
+.beauty-gallery-mosaic { display: grid; grid-template-columns: 1.2fr 1fr 1fr; grid-template-rows: 170px 170px 150px; gap: 12px; }
+.beauty-gallery-tile { border: 0; padding: 0; position: relative; overflow: hidden; border-radius: 7px; cursor: pointer; text-align: left; background: #e8dccc; min-width: 0; }
+.beauty-gallery-tile img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .65s cubic-bezier(.2,.7,.2,1); }
+.beauty-gallery-tile:hover img { transform: scale(1.055); }
+.beauty-gallery-tile--1 { grid-column: 1 / 3; grid-row: 1 / 3; }
+.beauty-gallery-tile--2 { grid-column: 3; grid-row: 1; }
+.beauty-gallery-tile--3 { grid-column: 3; grid-row: 2; }
+.beauty-gallery-tile--4 { grid-column: 1; grid-row: 3; }
+.beauty-gallery-tile--5 { grid-column: 2; grid-row: 3; }
+.beauty-gallery-tile--6 { grid-column: 3; grid-row: 3; }
+.beauty-gallery-tile__shade { position: absolute; inset: 25% 0 0; background: linear-gradient(transparent, rgba(34,20,12,.72)); }
+.beauty-gallery-tile__caption { position: absolute; left: 20px; right: 48px; bottom: 17px; color: #fff; display: flex; flex-direction: column; gap: 4px; }
+.beauty-gallery-tile__caption strong { font-family: Georgia, serif; font-size: 18px; font-weight: 400; }
+.beauty-gallery-tile__caption small { font-size: 11px; color: rgba(255,255,255,.86); }
+.beauty-gallery-tile__arrow { position: absolute; right: 16px; bottom: 16px; width: 28px; height: 28px; border: 1px solid rgba(255,255,255,.7); border-radius: 50%; display: grid; place-items: center; color: white; }
+.beauty-gallery-empty { display: grid; height: 100%; place-items: center; color: #8b7763; font-size: 12px; }
+.beauty-gallery-center { display: flex; justify-content: center; margin-top: 28px; }
+.beauty-gallery-button { min-height: 44px; border-radius: 30px; display: inline-flex; justify-content: center; align-items: center; gap: 10px; padding: 0 28px; text-decoration: none; font-size: 11px; letter-spacing: .04em; font-weight: 600; cursor: pointer; transition: .25s ease; }
+.beauty-gallery-button--solid { background: var(--brown); color: #fff; border: 1px solid var(--brown); box-shadow: 0 7px 18px rgba(81,51,33,.12); }
+.beauty-gallery-button--solid:hover { background: #765039; transform: translateY(-2px); }
+.beauty-gallery-button--outline { background: transparent; border: 1px solid #a98a6b; color: var(--brown); }
+.beauty-gallery-button--outline:hover { background: var(--brown); color: #fff; }
+.beauty-gallery-library { padding: 58px 0 64px; background: var(--bg); }
+.beauty-gallery-section-heading--library { margin-bottom: 22px; }
+.beauty-gallery-filters { display: flex; flex-wrap: wrap; gap: 9px; justify-content: center; margin-bottom: 25px; }
+.beauty-gallery-filters button { border: 1px solid #e1d5c7; background: transparent; color: #786858; border-radius: 25px; padding: 9px 17px; font: inherit; font-size: 11px; cursor: pointer; transition: .2s; }
+.beauty-gallery-filters button:hover, .beauty-gallery-filters button.is-active { color: #fff; border-color: var(--brown); background: var(--brown); }
+.beauty-gallery-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.beauty-gallery-grid__item { border: 0; padding: 0; border-radius: 6px; overflow: hidden; aspect-ratio: 1.48; background: #e7d9c8; position: relative; cursor: pointer; }
+.beauty-gallery-grid__item img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .5s; }
+.beauty-gallery-grid__item:hover img { transform: scale(1.07); }
+.beauty-gallery-grid__overlay { position: absolute; inset: 0; display: grid; place-items: center; color: white; background: rgba(54,34,22,0); opacity: 0; transition: .25s; font-size: 28px; }
+.beauty-gallery-grid__item:hover .beauty-gallery-grid__overlay { background: rgba(54,34,22,.28); opacity: 1; }
+.beauty-gallery-grid__item.is-hidden { display: none; }
+.beauty-gallery-library__more { margin-top: 24px; }
+.beauty-gallery-cta { min-height: 170px; margin-block: 0 42px; border-radius: 8px; overflow: hidden; position: relative; display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 30px 6%; background: #eee0cf; }
+.beauty-gallery-cta__photo { position: absolute; inset: 0 0 0 48%; opacity: .72; }
+.beauty-gallery-cta__photo img { width: 100%; height: 100%; object-fit: cover; }
+.beauty-gallery-cta:after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, #f1e5d6 0%, rgba(241,229,214,.97) 42%, rgba(241,229,214,.2) 100%); }
+.beauty-gallery-cta__content, .beauty-gallery-cta > a { position: relative; z-index: 1; }
+.beauty-gallery-cta__content { max-width: 570px; }
+.beauty-gallery-cta__content .beauty-gallery-eyebrow { margin-bottom: 8px; }
+.beauty-gallery-cta h2 { font-size: 30px; margin-bottom: 7px; }
+.beauty-gallery-cta__content > p:last-child { color: #786858; font-size: 12px; margin: 0; }
+.beauty-gallery-lightbox { position: fixed; z-index: 999999; inset: 0; display: none; align-items: center; justify-content: center; padding: 55px 70px; background: rgba(20,14,10,.92); }
+.beauty-gallery-lightbox.is-open { display: flex; }
+.beauty-gallery-lightbox img { max-width: min(1100px, 100%); max-height: 85vh; object-fit: contain; box-shadow: 0 15px 60px rgba(0,0,0,.35); }
+.beauty-gallery-lightbox button { position: absolute; border: 1px solid rgba(255,255,255,.45); background: rgba(255,255,255,.1); color: white; border-radius: 50%; cursor: pointer; width: 42px; height: 42px; font-size: 25px; }
+.beauty-gallery-lightbox__close { top: 22px; right: 25px; }
+.beauty-gallery-lightbox__prev { left: 20px; top: 50%; }
+.beauty-gallery-lightbox__next { right: 20px; top: 50%; }
+@media (max-width: 760px) {
+  .beauty-gallery-container { width: min(100% - 30px, 560px); }
+  .beauty-gallery-hero { min-height: 310px; }
+  .beauty-gallery-hero__image img { object-position: 62% center; }
+  .beauty-gallery-hero__veil { background: linear-gradient(90deg, rgba(250,245,237,.96), rgba(250,245,237,.78) 58%, rgba(250,245,237,.2)); }
+  .beauty-gallery-hero__content { padding-block: 25px; }
+  .beauty-gallery-breadcrumb { margin-bottom: 24px; }
+  .beauty-gallery-hero__text br { display: none; }
+  .beauty-gallery-featured { padding-block: 42px; }
+  .beauty-gallery-mosaic { grid-template-columns: 1fr 1fr; grid-template-rows: 210px 145px 145px; gap: 9px; }
+  .beauty-gallery-tile--1 { grid-column: 1 / 3; grid-row: 1; }
+  .beauty-gallery-tile--2 { grid-column: 1; grid-row: 2; }
+  .beauty-gallery-tile--3 { grid-column: 2; grid-row: 2; }
+  .beauty-gallery-tile--4 { grid-column: 1; grid-row: 3; }
+  .beauty-gallery-tile--5 { grid-column: 2; grid-row: 3; }
+  .beauty-gallery-tile--6 { display: none; }
+  .beauty-gallery-tile__caption { left: 12px; bottom: 12px; right: 35px; }
+  .beauty-gallery-tile__caption strong { font-size: 15px; }
+  .beauty-gallery-tile__caption small { font-size: 10px; }
+  .beauty-gallery-tile__arrow { right: 9px; bottom: 10px; width: 24px; height: 24px; }
+  .beauty-gallery-library { padding: 42px 0; }
+  .beauty-gallery-filters { justify-content: flex-start; flex-wrap: nowrap; overflow-x: auto; padding-bottom: 8px; }
+  .beauty-gallery-filters button { white-space: nowrap; }
+  .beauty-gallery-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; }
+  .beauty-gallery-cta { display: block; padding: 28px 22px; min-height: 210px; }
+  .beauty-gallery-cta__photo { inset: 0; }
+  .beauty-gallery-cta:after { background: linear-gradient(90deg, rgba(241,229,214,.97), rgba(241,229,214,.78)); }
+  .beauty-gallery-cta > a { margin-top: 18px; }
+  .beauty-gallery-lightbox { padding: 55px 15px; }
+  .beauty-gallery-lightbox__prev { left: 8px; }
+  .beauty-gallery-lightbox__next { right: 8px; }
+}
+
+/* BEAUTY - FULL WIDTH GALLERY HERO BANNER */
+.beauty-gallery-hero {
+    width: 100vw !important;
+    max-width: 100vw !important;
+    margin-left: calc(50% - 50vw) !important;
+    margin-right: calc(50% - 50vw) !important;
+    border-radius: 0 !important;
+    box-sizing: border-box;
+}
+
+.beauty-gallery-hero__image {
+    width: 100%;
+    height: 100%;
+}
+
+.beauty-gallery-hero__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+@media (max-width: 767px) {
+    .beauty-gallery-hero {
+        width: 100vw !important;
+        max-width: 100vw !important;
+        margin-left: calc(50% - 50vw) !important;
+        margin-right: calc(50% - 50vw) !important;
+    }
+}
+
+/* BEAUTY GALLERY HERO - REDESIGN */
+.beauty-gallery-hero {
+    position: relative !important;
+    width: 100vw !important;
+    max-width: none !important;
+    margin-left: calc(50% - 50vw) !important;
+    margin-right: calc(50% - 50vw) !important;
+    min-height: 390px;
+    border-radius: 0 !important;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.beauty-gallery-hero__image {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.beauty-gallery-hero__image img {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center 42% !important;
+}
+
+.beauty-gallery-hero__veil {
+    position: absolute !important;
+    inset: 0 !important;
+    background: linear-gradient(
+        90deg,
+        rgba(247,242,235,.97) 0%,
+        rgba(247,242,235,.88) 30%,
+        rgba(247,242,235,.48) 48%,
+        rgba(247,242,235,.04) 72%
+    ) !important;
+    z-index: 1;
+}
+
+.beauty-gallery-hero__content {
+    position: relative !important;
+    z-index: 2 !important;
+    width: min(1200px, calc(100% - 48px)) !important;
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    padding: 52px 0 48px !important;
+    box-sizing: border-box;
+}
+
+.beauty-gallery-hero__content h1 {
+    color: #604b3f !important;
+}
+
+@media (max-width: 767px) {
+    .beauty-gallery-hero {
+        min-height: 430px;
+    }
+
+    .beauty-gallery-hero__image img {
+        object-position: 62% center !important;
+    }
+
+    .beauty-gallery-hero__veil {
+        background: linear-gradient(
+            90deg,
+            rgba(247,242,235,.94),
+            rgba(247,242,235,.76)
+        ) !important;
+    }
+
+    .beauty-gallery-hero__content {
+        width: calc(100% - 36px) !important;
+        padding: 38px 0 !important;
+    }
+}

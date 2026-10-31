@@ -1,5 +1,7 @@
-<?php get_header(); ?>
-<section class="page-hero"><div class="container"><span class="eyebrow">Danh mục dịch vụ</span><h1 class="page-title"><?php single_term_title(); ?></h1><?php echo wp_kses_post(term_description()); ?></div></section>
-<main class="content-area container"><div class="bv-chips-row" role="navigation" aria-label="Nhóm dịch vụ"><a class="bv-pill<?php echo is_post_type_archive('spa_service') ? ' active' : ''; ?>" href="<?php echo esc_url(get_post_type_archive_link('spa_service')); ?>">Tất cả</a><?php $beauty_terms = get_terms(array('taxonomy' => 'spa_service_cat', 'hide_empty' => false)); if (!is_wp_error($beauty_terms)) { foreach ($beauty_terms as $beauty_term) { echo '<a class="bv-pill' . (is_tax('spa_service_cat', $beauty_term->term_id) ? ' active' : '') . '" href="' . esc_url(get_term_link($beauty_term)) . '">' . esc_html($beauty_term->name) . '</a>'; } } ?></div>
-<?php if (have_posts()) : ?><div class="bv-grid"><?php while (have_posts()) : the_post(); get_template_part('template-parts/service-card'); endwhile; ?></div><?php beauty_pagination(); else : ?><div class="empty-state"><h2>Danh mục chưa có dịch vụ</h2></div><?php endif; ?></main>
-<?php get_footer(); ?>
+<?php
+/**
+ * Trang nhóm dịch vụ (taxonomy spa_service_cat) – dùng chung bố cục với trang Dịch vụ.
+ */
+get_header();
+get_template_part('template-parts/service-layout');
+get_footer();

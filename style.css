@@ -474,8 +474,6 @@ a.page-numbers:hover{background:#f3eadf;border-color:var(--spa-gold,#c9a96e)}
 .bv-prod-actions>*{min-width:0;width:100%;text-align:center;justify-content:center;padding:10px 7px;font-size:12px}
 .beauty-wishlist-toggle{position:absolute;top:12px;right:12px;z-index:3;width:38px;height:38px;border:1px solid var(--spa-border);border-radius:50%;background:rgba(255,253,249,.95);color:var(--spa-brown);font-size:24px;line-height:1;cursor:pointer;box-shadow:0 4px 14px rgba(53,40,32,.12);transition:transform .2s,color .2s,background .2s}
 .beauty-wishlist-toggle:hover{transform:scale(1.08)}.beauty-wishlist-toggle.is-favorite{background:#fff0f0;color:#d51e42;border-color:#d51e42}
-.header-wishlist{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:3px;font-size:23px;color:var(--spa-brown);padding:7px}
-.wishlist-count{display:inline-flex;align-items:center;justify-content:center;min-width:18px;height:18px;padding:0 4px;border-radius:20px;background:var(--spa-brown);color:#fff;font:11px var(--font-sans)}
 .beauty-single-layout{display:grid;grid-template-columns:minmax(0,850px) minmax(230px,300px);gap:42px;align-items:start;justify-content:center}
 .beauty-single-article{max-width:none;min-width:0;font-size:17px;line-height:1.75}
 .beauty-article-body p{margin:0 0 20px}.beauty-article-body h2{font-size:clamp(25px,3vw,32px);margin:36px 0 14px}.beauty-article-body h3{font-size:23px;margin:28px 0 12px}
@@ -515,13 +513,10 @@ a.page-numbers:hover{background:#f3eadf;border-color:var(--spa-gold,#c9a96e)}
 
 /* 1b. Công cụ trên header: tìm kiếm, yêu thích, giỏ hàng cùng kiểu, cùng cỡ + nút Đặt lịch cùng chiều cao */
 .header-tools{display:flex;align-items:center;gap:10px;margin-left:auto}
-.header-search-toggle,.header-wishlist,.header-cart{position:relative;display:inline-grid;place-items:center;width:44px;height:44px;padding:0;border-radius:50%;border:1px solid var(--spa-border);background:#fff;color:var(--spa-brown);font-size:0;line-height:1;cursor:pointer;transition:background .2s,color .2s,border-color .2s,transform .2s,box-shadow .2s}
-.header-search-toggle:hover,.header-wishlist:hover,.header-cart:hover{background:var(--spa-brown);border-color:var(--spa-brown);color:#fff;transform:translateY(-1px);box-shadow:0 6px 16px rgba(96,75,63,.18)}
-.header-search-toggle svg,.header-wishlist svg,.header-cart svg{display:block;width:20px;height:20px}
-.header-wishlist.has-items svg{fill:#d9455f;stroke:#d9455f}
-.header-wishlist.has-items:hover svg{fill:#fff;stroke:#fff}
-.cart-count,.wishlist-count{position:absolute;top:-5px;right:-5px;display:block;min-width:20px;height:20px;padding:0 5px;border-radius:10px;border:2px solid var(--spa-ivory);background:#a87948;color:#fff;font:700 11px/16px var(--font-sans);text-align:center;box-sizing:border-box}
-.cart-count.is-zero,.wishlist-count.is-zero{display:none}
+.header-search-toggle,.header-cart{position:relative;display:inline-grid;place-items:center;width:44px;height:44px;padding:0;border-radius:50%;border:1px solid var(--spa-border);background:#fff;color:var(--spa-brown);font-size:0;line-height:1;cursor:pointer;transition:background .2s,color .2s,border-color .2s,transform .2s,box-shadow .2s}
+.header-search-toggle:hover,.header-cart:hover{background:var(--spa-brown);border-color:var(--spa-brown);color:#fff;transform:translateY(-1px);box-shadow:0 6px 16px rgba(96,75,63,.18)}
+.header-search-toggle svg,.header-cart svg{display:block;width:20px;height:20px}
+.cart-count,.cart-count.is-zero{display:none}
 .header-cta{height:44px;padding:0 24px;border-radius:999px;font-size:14px;margin-left:4px}
 @media(max-width:1100px){.header-inner{gap:12px}.brand-logo{width:190px}.header-cta{padding:0 16px}.main-nav .beauty-primary-menu{gap:12px}.main-nav .beauty-primary-menu>li>a{font-size:13px}}
 @media(max-width:900px){
@@ -530,7 +525,7 @@ a.page-numbers:hover{background:#f3eadf;border-color:var(--spa-gold,#c9a96e)}
  .main-nav .beauty-primary-menu>li>a{height:auto;min-height:44px}
  .main-nav .submenu-toggle{width:44px;height:44px}
  .header-tools{gap:8px}
- .header-search-toggle,.header-wishlist,.header-cart{width:40px;height:40px}
+ .header-search-toggle,.header-cart{width:40px;height:40px}
 }
 
 /* 2. Thanh liên hệ nhanh: chỉ 5 nút, kéo xuống gần đáy màn hình */
@@ -685,32 +680,1140 @@ html body{padding-bottom:0!important;margin-bottom:0!important}
 .bv-addcart,.bv-prod-actions{position:relative;z-index:2}
 .added_to_cart.wc-forward{margin-top:8px;font-size:13px;font-weight:700;color:var(--spa-brown,#604b3f);text-decoration:underline}
 
+/* =====================================================================
+   BEAUTY SPA – CHUẨN HÓA GIAO DIỆN (header 3 trục, nút bo tròn, typography)
+   Khối này đặt CUỐI style.css để ghi đè các luật cũ. Muốn đổi màu/cỡ chữ chỉ sửa tại đây.
+   ===================================================================== */
 
-/* BANNER BEAUTY SPA: tràn hết chiều ngang section, không có liên kết */
-body .bv-promo-banner-section{
-  display:block;
-  width:100%;
-  max-width:none;
+/* ---------- 4. Typography: font + biến dùng chung toàn site ---------- */
+:root{
+  --font-serif:'Playfair Display','Lora','BeautySerif','Palatino Linotype',Palatino,'Book Antiqua','Times New Roman',serif;
+  --font-sans:'Montserrat','Nunito','BeautySans','Helvetica Neue',Arial,'Segoe UI',sans-serif;
+  --bv-heading:#3e2723;
+  --bv-body:#555555;
+  --bv-brand-shadow:0 4px 10px rgba(139,94,60,.2);
+}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--font-sans);font-size:16px;line-height:1.8;color:var(--bv-body);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility}
+p,li,td,th,dd,label,input,select,textarea{font-family:var(--font-sans)}
+small,.small,.muted,.bv-meta,.meta{font-size:14px}
+
+h1,h2,h3,h4,h5,h6{font-family:var(--font-serif);color:var(--bv-heading);font-weight:600;line-height:1.3;letter-spacing:0}
+h1{font-size:40px}
+h2{font-size:32px}
+h3{font-size:24px}
+h4{font-size:20px}
+h5{font-size:18px}
+h6{font-size:16px}
+
+/* Các lớp tiêu đề cũ có cỡ riêng (clamp 30–66px) → đưa về đúng thang H1 40 / H2 32 / H3 24 */
+.hero h1,.hero-copy h1,.page-title,.promo-inner h1{font-family:var(--font-serif);font-weight:600;font-size:40px;line-height:1.25;color:var(--bv-heading)}
+.section-heading h2,.split h2,.promo-inner h2,.cta-band h2,.pricing-section h2,.booking-intro h2,.entry-content h2,.bv-block h2{font-family:var(--font-serif);font-weight:600;font-size:32px;line-height:1.3;color:var(--bv-heading)}
+.card h3,.team-role-grid h3,.entry-content h3,.section-heading h3,.bv-side-card h3{font-family:var(--font-serif);font-weight:600;font-size:24px;line-height:1.35;color:var(--bv-heading)}
+.page-title{font-size:40px!important}
+@media(max-width:600px){
+  h1,.hero h1,.hero-copy h1,.page-title,.promo-inner h1{font-size:32px}
+  .page-title{font-size:32px!important}
+  h2,.section-heading h2,.split h2,.promo-inner h2,.cta-band h2,.pricing-section h2,.booking-intro h2,.entry-content h2,.bv-block h2{font-size:26px}
+  h3,.card h3,.team-role-grid h3,.entry-content h3{font-size:22px}
+}
+
+/* ---------- 3. Nút bấm: bo tròn, chuyển động mềm, nổi nhẹ khi hover ---------- */
+.btn,.button,a.button,button.button,input.button,
+.btn-detail,.btn-book,.add_to_cart_button,a.add_to_cart_button,
+.woocommerce a.button,.woocommerce button.button,.woocommerce input.button,
+input[type="submit"],.wp-block-button__link,
+.bv-prod-actions .btn,.bv-prod-actions .bv-soldout,.bv-actions .btn,.bvp-actions .btn,.bv-cart-summary .btn,
+.header-cta{
+  border-radius:50px;
+  transition:all .3s ease;
+}
+.btn:hover,.button:hover,a.button:hover,button.button:hover,input.button:hover,
+.btn-detail:hover,.btn-book:hover,.add_to_cart_button:hover,a.add_to_cart_button:hover,
+.woocommerce a.button:hover,.woocommerce button.button:hover,.woocommerce input.button:hover,
+input[type="submit"]:hover,.wp-block-button__link:hover,
+.bv-prod-actions .btn:hover,.bv-actions .btn:hover,.bvp-actions .btn:hover,.bv-cart-summary .btn:hover,
+.header-cta:hover{
+  transform:translateY(-2px);
+  box-shadow:var(--bv-brand-shadow);
+}
+@media(prefers-reduced-motion:reduce){
+  .btn,.button,a.button,button.button,input.button,.btn-detail,.btn-book,.add_to_cart_button,input[type="submit"],.header-cta{transition:none}
+  .btn:hover,.button:hover,a.button:hover,button.button:hover,.btn-detail:hover,.btn-book:hover,.add_to_cart_button:hover,input[type="submit"]:hover,.header-cta:hover{transform:none}
+}
+
+/* ---------- 1 + 2. Header: lưới 3 trục cân bằng (1fr auto 1fr) ---------- */
+.site-header .header-inner{
+  display:grid;
+  grid-template-columns:1fr auto 1fr;
+  align-items:center;
+  column-gap:24px;
+  min-height:82px;
+}
+.site-header .brand{justify-self:start;display:flex;align-items:center}
+.site-header .main-nav{justify-self:center}
+.site-header .main-nav .beauty-primary-menu{display:flex;align-items:center;justify-content:center;gap:26px}
+.site-header .main-nav .beauty-primary-menu>li>a{font-size:14px;font-weight:600;color:var(--bv-heading)}
+.site-header .main-nav .beauty-primary-menu>li>a:hover{color:var(--spa-gold)}
+.site-header .header-right{
+  justify-self:end;
+  display:flex;
+  align-items:center;
+  gap:16px;
+  padding-right:20px;
+}
+.site-header .header-tools{display:flex;align-items:center;gap:10px;margin-left:0}
+
+/* ---------- 5. Nút Đặt lịch: gọn, cao bằng icon tròn bên cạnh (40px) ---------- */
+.site-header .header-search-toggle,.site-header .header-cart{width:40px;height:40px}
+.site-header .header-cta{
+  box-sizing:border-box;
+  height:40px;
   margin:0;
-  padding:8px 0;
-  overflow:hidden;
-  background:linear-gradient(90deg,#f8f1e8 0%,#fffaf4 50%,#f8f1e8 100%);
-  line-height:0;
+  padding:10px 20px;
+  font-size:14px;
+  line-height:1.2;
+  white-space:nowrap;
 }
-body .bv-promo-banner-section .bv-promo-banner-image{
-  display:block;
-  width:100%;
-  max-width:none;
-  height:auto;
-  margin:0;
-  border:0;
-  border-radius:0;
-  box-shadow:none;
-  object-fit:cover;
-  cursor:default;
-  pointer-events:none;
+
+/* Màn hình vừa: thu gọn khoảng cách để 6 mục menu không bị chật */
+@media(max-width:1240px){
+  .site-header .header-inner{column-gap:14px}
+  .site-header .main-nav .beauty-primary-menu{gap:16px}
+  .site-header .main-nav .beauty-primary-menu>li>a{font-size:13px}
+  .site-header .header-right{gap:10px;padding-right:8px}
+  .site-header .brand-logo{width:170px}
 }
-@media(max-width:700px){
-  body .bv-promo-banner-section{padding:4px 0}
-  body .bv-promo-banner-section .bv-promo-banner-image{width:100%;height:auto}
+@media(max-width:1020px){
+  .site-header .main-nav .beauty-primary-menu{gap:10px}
+  .site-header .main-nav .beauty-primary-menu>li>a{font-size:12.5px}
+  .site-header .header-cta{padding:10px 14px;font-size:13px}
+  .site-header .brand-logo{width:140px}
 }
+/* Điện thoại / tablet nhỏ: quay lại bố cục 1 hàng + menu thả xuống (như cũ) */
+@media(max-width:900px){
+  .site-header .header-inner{display:flex;justify-content:space-between;align-items:center;gap:10px}
+  .site-header .header-right{margin-left:auto;padding-right:0}
+  .site-header .menu-toggle{order:3}
+  .site-header .brand-logo{width:150px}
+}
+
+
+/* BEAUTY SPA INTRO CARD - PRODUCT DETAIL */
+.bv-detail-side .bv-spa-intro {
+    position: relative;
+    overflow: hidden;
+    padding: 28px 24px !important;
+    border: 1px solid #eadccd;
+    border-radius: 16px;
+    background: linear-gradient(155deg, #fbf7f1 0%, #f1e5d8 100%);
+    box-shadow: 0 8px 24px rgba(83, 59, 42, .06);
+}
+
+.bv-spa-intro::before {
+    content: "";
+    position: absolute;
+    top: -45px;
+    right: -45px;
+    width: 125px;
+    height: 125px;
+    border: 1px solid rgba(130, 95, 69, .13);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.bv-spa-intro__eyebrow {
+    display: inline-block;
+    margin-bottom: 12px;
+    color: #9a765a;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+}
+
+.bv-spa-intro h3 {
+    margin: 0 0 12px;
+    color: #4e382b;
+    font-family: Georgia, serif;
+    font-size: 23px;
+    line-height: 1.35;
+}
+
+.bv-spa-intro .bv-spa-intro__desc {
+    margin: 0 0 22px;
+    color: #837064;
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+.bv-spa-intro__item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 14px 0;
+    border-top: 1px solid rgba(139, 105, 79, .16);
+}
+
+.bv-spa-intro__icon {
+    display: flex;
+    flex: 0 0 32px;
+    width: 32px;
+    height: 32px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #e8d8c8;
+    color: #76553e;
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.bv-spa-intro__item strong {
+    display: block;
+    margin: 2px 0 5px;
+    color: #594333;
+    font-size: 12px;
+}
+
+.bv-spa-intro__item p {
+    margin: 0;
+    color: #8a796d;
+    font-size: 11px;
+    line-height: 1.6;
+}
+
+.bv-spa-intro__footer {
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(139, 105, 79, .16);
+    color: #a1846b;
+    font-size: 8px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-align: center;
+}
+
+@media (max-width: 900px) {
+    .bv-detail-side .bv-spa-intro {
+        padding: 24px 20px !important;
+    }
+}
+
+/* BEAUTY SPA - CUSTOMER JOURNEY SIDEBAR */
+.bv-spa-journey {
+    position: relative;
+    overflow: hidden;
+    padding: 24px 20px !important;
+    border: 1px solid #eadccd;
+    border-radius: 16px;
+    background: linear-gradient(155deg, #fffaf4 0%, #f1e5d8 100%);
+    box-shadow: 0 8px 24px rgba(83, 59, 42, .06);
+}
+
+.bv-spa-journey__eyebrow {
+    display: block;
+    margin-bottom: 9px;
+    color: #a1846b;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+}
+
+.bv-spa-journey h3 {
+    margin: 0 0 9px;
+    color: #594333;
+    font-family: var(--font-serif, Georgia, serif);
+    font-size: 22px;
+    line-height: 1.35;
+}
+
+.bv-spa-journey__intro {
+    margin: 0 0 18px;
+    color: #8a796c;
+    font-size: 11px;
+    line-height: 1.7;
+}
+
+.bv-spa-journey__step {
+    position: relative;
+    display: flex;
+    gap: 12px;
+    padding: 13px 0;
+    border-top: 1px solid rgba(139, 105, 79, .17);
+}
+
+.bv-spa-journey__number {
+    display: flex;
+    flex: 0 0 32px;
+    width: 32px;
+    height: 32px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #e8d8c8;
+    color: #76553e;
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.bv-spa-journey__step strong {
+    display: block;
+    margin: 2px 0 5px;
+    color: #594333;
+    font-size: 12px;
+}
+
+.bv-spa-journey__step p {
+    margin: 0;
+    color: #8a796c;
+    font-size: 10px;
+    line-height: 1.6;
+}
+
+.bv-spa-journey__footer {
+    margin-top: 10px;
+    padding-top: 13px;
+    border-top: 1px solid rgba(139, 105, 79, .17);
+    color: #a1846b;
+    font-size: 8px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    line-height: 1.6;
+    text-align: center;
+}
+
+@media (max-width: 900px) {
+    .bv-spa-journey {
+        padding: 22px 18px !important;
+    }
+}
+
+/* BEAUTY BLOG - SKINCARE TIPS SIDEBAR */
+.beauty-skincare-tips {
+    margin-top: 18px;
+    padding: 22px 20px;
+    border: 1px solid var(--spa-border);
+    border-radius: 12px;
+    background: linear-gradient(155deg, #fffaf4, #f2e8dc);
+    box-shadow: 0 8px 22px rgba(53, 40, 32, .05);
+}
+
+.beauty-skincare-tips__eyebrow {
+    display: block;
+    margin-bottom: 9px;
+    color: #a1846b;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.beauty-skincare-tips h3 {
+    margin: 0 0 10px;
+    color: #594333;
+    font: 23px/1.3 var(--font-serif, Georgia, serif);
+}
+
+.beauty-skincare-tips__intro {
+    margin: 0 0 15px;
+    color: #847365;
+    font-size: 11px;
+    line-height: 1.7;
+}
+
+.beauty-skincare-tip {
+    display: flex;
+    gap: 11px;
+    padding: 13px 0;
+    border-top: 1px solid rgba(139, 105, 79, .17);
+}
+
+.beauty-skincare-tip > span {
+    display: flex;
+    flex: 0 0 30px;
+    width: 30px;
+    height: 30px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #e8d8c8;
+    color: #76553e;
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.beauty-skincare-tip strong {
+    display: block;
+    margin: 2px 0 5px;
+    color: #594333;
+    font-size: 11px;
+}
+
+.beauty-skincare-tip p {
+    margin: 0;
+    color: #89796d;
+    font-size: 10px;
+    line-height: 1.6;
+}
+
+.beauty-skincare-tips__link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    margin-top: 8px;
+    padding-top: 13px;
+    border-top: 1px solid rgba(139, 105, 79, .17);
+    color: #76553e;
+    font-size: 10px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.beauty-skincare-tips__link:hover {
+    color: #a1846b;
+}
+
+.beauty-skincare-tips__link span {
+    font-size: 16px;
+}
+
+@media (max-width: 800px) {
+    .beauty-skincare-tips {
+        margin-top: 16px;
+    }
+}
+
+/* BEAUTY BLOG - LATEST POSTS SIDEBAR */
+.beauty-latest-posts {
+    margin-top: 18px;
+    padding: 22px 20px;
+    border: 1px solid var(--spa-border);
+    border-radius: 12px;
+    background: linear-gradient(155deg, #fffaf4, #f2e8dc);
+    box-shadow: 0 8px 22px rgba(53, 40, 32, .05);
+}
+
+.beauty-latest-posts__eyebrow {
+    display: block;
+    margin-bottom: 9px;
+    color: #a1846b;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.beauty-latest-posts h3 {
+    margin: 0 0 9px;
+    color: #594333;
+    font: 23px/1.3 var(--font-serif, Georgia, serif);
+}
+
+.beauty-latest-posts__intro {
+    margin: 0 0 15px;
+    color: #847365;
+    font-size: 11px;
+    line-height: 1.7;
+}
+
+.beauty-latest-post {
+    padding: 13px 0;
+    border-top: 1px solid rgba(139, 105, 79, .17);
+}
+
+.beauty-latest-post time {
+    display: block;
+    margin-bottom: 5px;
+    color: #a1846b;
+    font-size: 9px;
+}
+
+.beauty-latest-post a {
+    display: block;
+    color: #594333;
+    font-family: var(--font-serif, Georgia, serif);
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.45;
+    text-decoration: none;
+}
+
+.beauty-latest-post a:hover {
+    color: #a1846b;
+}
+
+.beauty-latest-post p {
+    margin: 5px 0 0;
+    color: #89796d;
+    font-size: 10px;
+    line-height: 1.6;
+}
+
+.beauty-latest-posts__empty {
+    color: #89796d;
+    font-size: 11px;
+    line-height: 1.6;
+}
+
+.beauty-latest-posts__link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    margin-top: 8px;
+    padding-top: 13px;
+    border-top: 1px solid rgba(139, 105, 79, .17);
+    color: #76553e;
+    font-size: 10px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.beauty-latest-posts__link:hover {
+    color: #a1846b;
+}
+
+.beauty-latest-posts__link span {
+    font-size: 16px;
+}
+
+/* =========================================================
+   BEAUTY SPA - BANNER TU VAN LIEU TRINH TAI TRANG CHU
+   Vi tri: giua "Duoc nhieu khach lua chon" va "Combo hoan hao"
+   ========================================================= */
+.beauty-personal-banner-section {
+    position: relative;
+    width: 100%;
+    padding: clamp(28px, 4vw, 54px) 24px;
+    background:
+        radial-gradient(ellipse at 50% 0%, rgba(184, 154, 112, .10), transparent 68%),
+        linear-gradient(180deg, #fbf8f3 0%, #f7f2eb 100%);
+    box-sizing: border-box;
+    overflow: hidden;
+}
+.beauty-personal-banner-wrap {
+    width: min(1200px, 100%);
+    margin: 0 auto;
+    position: relative;
+}
+.beauty-personal-banner-link {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(184, 154, 112, .24);
+    border-radius: 20px;
+    background: #f7f2eb;
+    box-shadow: 0 16px 42px rgba(67, 48, 34, .10), 0 3px 10px rgba(67, 48, 34, .05);
+    transform: translateZ(0);
+    transition: box-shadow .35s ease, transform .35s ease;
+}
+.beauty-personal-banner-link:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 22px 52px rgba(67, 48, 34, .14), 0 5px 14px rgba(67, 48, 34, .06);
+}
+.beauty-personal-banner-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1300 / 296;
+    object-fit: cover;
+    object-position: center;
+}
+@media (max-width: 767px) {
+    .beauty-personal-banner-section {
+        padding: 24px 14px;
+    }
+    .beauty-personal-banner-link {
+        border-radius: 13px;
+    }
+    .beauty-personal-banner-image {
+        aspect-ratio: 1.65 / 1;
+        object-fit: cover;
+        object-position: 58% center;
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+    .beauty-personal-banner-link {
+        transition: none;
+    }
+    .beauty-personal-banner-link:hover {
+        transform: none;
+    }
+}
+
+
+/* ==========================================================
+   BEAUTY DESIGN SYSTEM - TYPOGRAPHY CONSISTENCY
+   Shared typography scale for all theme pages and sections
+   ========================================================== */
+:root {
+    --beauty-font-heading: var(--font-serif, 'BeautySerif', Georgia, serif);
+    --beauty-font-body: var(--font-sans, 'BeautySans', Arial, sans-serif);
+    --beauty-size-h1: clamp(36px, 4vw, 48px);
+    --beauty-size-h2: clamp(28px, 3vw, 34px);
+    --beauty-size-h3: clamp(19px, 2vw, 22px);
+    --beauty-size-h4: 18px;
+    --beauty-size-body: 15px;
+    --beauty-size-small: 13px;
+}
+
+html body,
+html body button,
+html body input,
+html body select,
+html body textarea {
+    font-family: var(--beauty-font-body) !important;
+}
+
+html body h1,
+html body h2,
+html body h3,
+html body h4,
+html body h5,
+html body h6,
+html body .page-title,
+html body .section-heading h2,
+html body .section-heading h3,
+html body .section-title,
+html body .section-title h2,
+html body .section-title h3,
+html body [class*="section-heading"] h2,
+html body [class*="section-heading"] h3,
+html body [class*="section-title"] h2,
+html body [class*="section-title"] h3 {
+    font-family: var(--beauty-font-heading) !important;
+    letter-spacing: 0 !important;
+    word-spacing: 0 !important;
+    font-style: normal;
+    text-wrap: balance;
+}
+
+html body h1,
+html body .page-title,
+html body .hero h1,
+html body .hero-title {
+    font-size: var(--beauty-size-h1) !important;
+    line-height: 1.15 !important;
+    font-weight: 600 !important;
+}
+
+html body h2,
+html body .section-heading h2,
+html body .section-title h2,
+html body [class*="section-heading"] h2,
+html body [class*="section-title"] h2 {
+    font-size: var(--beauty-size-h2) !important;
+    line-height: 1.22 !important;
+    font-weight: 600 !important;
+}
+
+html body h3,
+html body .card h3,
+html body .beauty-gallery-card h3,
+html body .beauty-album-card h3,
+html body .beauty-news-card h2,
+html body [class*="card"] h3 {
+    font-size: var(--beauty-size-h3) !important;
+    line-height: 1.3 !important;
+    font-weight: 600 !important;
+}
+
+html body h4,
+html body h5,
+html body h6 {
+    font-size: var(--beauty-size-h4) !important;
+    line-height: 1.35 !important;
+    font-weight: 600 !important;
+}
+
+html body p,
+html body li,
+html body .entry-content,
+html body .entry-content p,
+html body .beauty-gallery-card p,
+html body .beauty-news-card p {
+    font-family: var(--beauty-font-body) !important;
+    font-size: var(--beauty-size-body);
+    line-height: 1.75;
+}
+
+html body small,
+html body .eyebrow,
+html body .meta,
+html body .badge-best,
+html body .filters a,
+html body .beauty-read-more {
+    font-family: var(--beauty-font-body) !important;
+    font-size: var(--beauty-size-small);
+    line-height: 1.5;
+}
+
+/* Eyebrow labels stay visually secondary and consistent */
+html body .eyebrow,
+html body [class*="eyebrow"] {
+    font-size: 11px !important;
+    line-height: 1.5 !important;
+    font-weight: 700 !important;
+    letter-spacing: .14em !important;
+}
+
+/* Card titles share one size regardless of section */
+html body .card h3,
+html body .beauty-gallery-card h3,
+html body .beauty-album-card h3,
+html body .beauty-news-card h2,
+html body .bv-card-body h3,
+html body [class*="service-card"] h3,
+html body [class*="product-card"] h3 {
+    font-size: 20px !important;
+    line-height: 1.32 !important;
+}
+
+@media (max-width: 767px) {
+    :root {
+        --beauty-size-h1: clamp(32px, 8vw, 40px);
+        --beauty-size-h2: clamp(25px, 6vw, 30px);
+        --beauty-size-h3: 19px;
+        --beauty-size-body: 14px;
+    }
+    html body .card h3,
+    html body .beauty-gallery-card h3,
+    html body .beauty-album-card h3,
+    html body .beauty-news-card h2,
+    html body .bv-card-body h3 {
+        font-size: 18px !important;
+    }
+}
+
+/* BEAUTY SPA - RESTORE FULL SECTION BANNER */
+.beauty-personal-banner-section {
+    display: block !important;
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+}
+
+.beauty-personal-banner-wrap {
+    display: block !important;
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+}
+
+.beauty-personal-banner-link {
+    display: block !important;
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border-radius: 18px !important;
+    overflow: hidden !important;
+}
+
+.beauty-personal-banner-image {
+    display: block !important;
+    width: 100% !important;
+    max-width: none !important;
+    height: auto !important;
+    object-fit: cover !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+
+/* BEAUTY - MOVE COMBO HEADING DOWN 60PX */
+.beauty-personal-banner-section + section {
+    padding-top: 60px !important;
+}
+
+/* BEAUTY SPA - CTA LUXURY GLOW BORDER V2 */
+@property --beauty-cta-angle {
+    syntax: "<angle>";
+    inherits: false;
+    initial-value: 0deg;
+}
+
+/* Remove the full-width brown slab outside the CTA frame */
+.bv-cta-band {
+    position: relative !important;
+    isolation: isolate;
+    overflow: visible !important;
+    background: #f7f2eb !important;
+    padding: 24px 0 !important;
+    margin: 0 !important;
+}
+
+/* The CTA itself is the only dark panel */
+.bv-cta-band > .container {
+    position: relative !important;
+    isolation: isolate;
+    z-index: 0;
+    width: min(calc(100% - 40px), 1200px) !important;
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    padding: 28px 34px !important;
+    box-sizing: border-box !important;
+    border: 0 !important;
+    border-radius: 20px !important;
+    overflow: visible !important;
+    background: linear-gradient(115deg, #604b3f 0%, #49372f 52%, #604b3f 100%) !important;
+    box-shadow: 0 14px 34px rgba(53,40,32,.15), inset 0 1px 0 rgba(255,255,255,.08) !important;
+}
+
+/* Animated champagne highlight around the frame */
+.bv-cta-band > .container::before {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    z-index: -1;
+    padding: 2px;
+    border-radius: 22px;
+    pointer-events: none;
+    background: conic-gradient(
+        from var(--beauty-cta-angle),
+        #b89a70 0deg,
+        #b89a70 235deg,
+        #fff0ce 275deg,
+        #c99f65 300deg,
+        #fff8e8 325deg,
+        #b89a70 360deg
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    animation: beautyCtaBorderRun 4.5s linear infinite !important;
+    opacity: 1 !important;
+}
+
+@keyframes beautyCtaBorderRun {
+    from { --beauty-cta-angle: 0deg; }
+    to   { --beauty-cta-angle: 360deg; }
+}
+
+.bv-cta-band > .container > * {
+    position: relative;
+    z-index: 1;
+}
+
+.bv-cta-band h2 {
+    color: #fffaf2 !important;
+}
+
+.bv-cta-band p {
+    color: rgba(255,250,242,.82) !important;
+}
+
+.bv-cta-band .btn.btn-light {
+    position: relative;
+    z-index: 2;
+    border: 1px solid rgba(219,190,145,.65) !important;
+    border-radius: 999px !important;
+    background: linear-gradient(135deg, #fffdf8, #f2e5d2) !important;
+    color: #4c392f !important;
+    transition: transform .28s ease, box-shadow .28s ease !important;
+}
+
+.bv-cta-band .btn.btn-light:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 26px rgba(28,18,13,.22), 0 0 18px rgba(224,194,145,.25) !important;
+}
+
+@media (max-width: 700px) {
+    .bv-cta-band {
+        padding: 18px 0 !important;
+    }
+    .bv-cta-band > .container {
+        width: calc(100% - 28px) !important;
+        padding: 22px 18px !important;
+        border-radius: 16px !important;
+    }
+    .bv-cta-band > .container::before {
+        border-radius: 18px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .bv-cta-band > .container::before {
+        animation: none !important;
+    }
+}
+
+/* BEAUTY SPA - CTA LUXURY GLOW BORDER V3 - ANIMATION VISIBILITY FIX */
+@property --beauty-cta-angle {
+    syntax: "<angle>";
+    inherits: false;
+    initial-value: 0deg;
+}
+
+.bv-cta-band > .container {
+    position: relative !important;
+    isolation: isolate !important;
+    overflow: hidden !important;
+    border: 2px solid transparent !important;
+    background:
+        linear-gradient(115deg, #604b3f 0%, #49372f 52%, #604b3f 100%) padding-box,
+        conic-gradient(
+            from var(--beauty-cta-angle),
+            #b89a70 0deg,
+            #b89a70 220deg,
+            #fff4d9 265deg,
+            #c99f65 295deg,
+            #fffaf0 325deg,
+            #b89a70 360deg
+        ) border-box !important;
+    box-shadow: 0 14px 34px rgba(53,40,32,.15) !important;
+}
+
+/* Animated highlight is placed above the panel background, never behind it */
+.bv-cta-band > .container::before {
+    content: none !important;
+    display: none !important;
+}
+
+.bv-cta-band > .container > * {
+    position: relative !important;
+    z-index: 1 !important;
+}
+
+@keyframes beautyCtaBorderRunV3 {
+    0%   { --beauty-cta-angle: 0deg; }
+    100% { --beauty-cta-angle: 360deg; }
+}
+
+@supports (background: conic-gradient(from 0deg, red, blue)) {
+    .bv-cta-band > .container {
+        animation: beautyCtaBorderRunV3 3.8s linear infinite !important;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .bv-cta-band > .container {
+        animation: none !important;
+    }
+}
+
+
+/* ==========================================================
+   [FIX CTA] BEAUTY SPA - BỎ KHUNG NGOÀI + VIỀN CHẠY NỔI BẬT (v2)
+   Dùng transform: rotate nên chạy được trên mọi trình duyệt
+   ========================================================== */
+
+/* 1) Bỏ khung/nền be hai bên (đánh X) */
+.bv-cta-band {
+    background: transparent !important;
+    box-shadow: none !important;
+    border: 0 !important;
+}
+
+/* 2) Khung trong: tự nó không vẽ nền, nền + viền do ::before / ::after vẽ */
+.bv-cta-band > .container {
+    position: relative !important;
+    overflow: hidden !important;
+    isolation: isolate !important;
+    border: 0 !important;
+    background: transparent !important;
+    animation: none !important;
+    box-shadow: 0 0 22px rgba(217,185,127,.45), 0 16px 36px rgba(53,40,32,.22) !important;
+}
+
+/* Lớp ánh sáng vàng xoay tròn (nằm dưới, chỉ lộ ra ở viền 3px) */
+.bv-cta-band > .container::before {
+    content: "" !important;
+    display: block !important;
+    position: absolute !important;
+    z-index: -2 !important;
+    left: 50% !important;
+    top: 50% !important;
+    right: auto !important;
+    bottom: auto !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+    opacity: 1 !important;
+    /* gỡ mask của bản V2 cũ (nó làm lớp sáng bị ẩn hoàn toàn) */
+    -webkit-mask: none !important;
+    mask: none !important;
+    width: 2400px !important;
+    height: 2400px !important;
+    margin: -1200px 0 0 -1200px !important;
+    pointer-events: none;
+    background: conic-gradient(
+        from 0deg,
+        #8f7249 0deg,
+        #a98a5c 120deg,
+        #d9b97f 140deg,
+        #fff3d0 175deg,
+        #ffffff 200deg,
+        #fff3d0 225deg,
+        #d9b97f 260deg,
+        #a98a5c 300deg,
+        #8f7249 360deg
+    ) !important;
+    animation: beautyCtaSpin 2s linear infinite !important;
+}
+
+/* Mặt nâu phủ lên, chừa viền 3px */
+.bv-cta-band > .container::after {
+    content: "" !important;
+    position: absolute !important;
+    inset: 3px !important;
+    z-index: -1 !important;
+    border-radius: 17px !important;
+    pointer-events: none;
+    background: linear-gradient(115deg, #604b3f 0%, #49372f 52%, #604b3f 100%) !important;
+}
+
+@keyframes beautyCtaSpin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+}
+
+
+/* BEAUTY SPA - BRIGHT MOVING GOLD BORDER */
+@property --beauty-bright-angle {
+    syntax: "<angle>";
+    inherits: false;
+    initial-value: 0deg;
+}
+
+.bv-cta-band > .container {
+    border: 3px solid transparent !important;
+    background:
+        linear-gradient(115deg, #604b3f, #49372f 52%, #604b3f) padding-box,
+        conic-gradient(
+            from var(--beauty-bright-angle),
+            #fff9e8 0deg,
+            #fff9e8 35deg,
+            #f3c66f 65deg,
+            #ffffff 90deg,
+            #b88943 125deg,
+            #fff9e8 180deg,
+            #f3c66f 235deg,
+            #ffffff 270deg,
+            #fff9e8 310deg,
+            #fff9e8 360deg
+        ) border-box !important;
+    animation: beautyBrightGoldRun 2.8s linear infinite !important;
+    box-shadow:
+        0 0 8px rgba(255, 231, 174, .45),
+        0 0 20px rgba(243, 198, 111, .22),
+        0 14px 34px rgba(53, 40, 32, .15) !important;
+}
+
+@keyframes beautyBrightGoldRun {
+    from { --beauty-bright-angle: 0deg; }
+    to   { --beauty-bright-angle: 360deg; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .bv-cta-band > .container {
+        animation: none !important;
+    }
+}
+
+/* BEAUTY SPA - PEARL LIGHT SWEEP CTA */
+@property --beauty-pearl-angle {
+    syntax: "<angle>";
+    inherits: false;
+    initial-value: 0deg;
+}
+
+.bv-cta-band > .container {
+    border: 3px solid transparent !important;
+    background:
+        linear-gradient(115deg, #604b3f, #49372f 52%, #604b3f) padding-box,
+        conic-gradient(
+            from var(--beauty-pearl-angle),
+            #ead9bd 0deg,
+            #fffdf4 35deg,
+            #c9a978 65deg,
+            #fffefa 90deg,
+            #ead9bd 125deg,
+            #ead9bd 190deg,
+            #fffdf4 230deg,
+            #c9a978 260deg,
+            #fffefa 290deg,
+            #ead9bd 360deg
+        ) border-box !important;
+
+    animation: beautyPearlSweep 2.8s linear infinite !important;
+
+    box-shadow:
+        0 0 9px rgba(255, 250, 235, .55),
+        0 0 22px rgba(238, 218, 184, .35),
+        0 14px 34px rgba(53, 40, 32, .15) !important;
+}
+
+@keyframes beautyPearlSweep {
+    from { --beauty-pearl-angle: 0deg; }
+    to   { --beauty-pearl-angle: 360deg; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .bv-cta-band > .container {
+        animation: none !important;
+    }
+}
+
+/* Dong bo font chu so tien */
+.price-table,
+.price-table td,
+.price-table th,
+.product-price,
+.package-card b,
+.price,
+.amount,
+.woocommerce-Price-amount {
+    font-family: Arial, sans-serif !important;
+    font-variant-numeric: tabular-nums lining-nums;
+    font-feature-settings: "tnum" 1, "lnum" 1;
+}
+
+.product-price,
+.price,
+.amount,
+.woocommerce-Price-amount {
+    white-space: nowrap;
+    font-weight: 700;
+}
+
+
+/* DONG BO FONT CHU VA SO TIEN */
+.price-table,
+.price-table td,
+.price-table th,
+.product-price,
+.product-price *,
+.package-card b,
+.package-card .price,
+.price,
+.amount,
+.woocommerce-Price-amount,
+.woocommerce-Price-currencySymbol {
+    font-family: var(--font-sans), Arial, sans-serif !important;
+    font-variant-numeric: tabular-nums lining-nums !important;
+    font-feature-settings: "tnum" 1, "lnum" 1 !important;
+    letter-spacing: 0 !important;
+}
+
+.product-price,
+.price,
+.amount,
+.woocommerce-Price-amount {
+    font-weight: 700 !important;
+    white-space: nowrap;
+}
+
+/* CAN DEU CAC KHUNG */
+.pricing-grid {
+    align-items: stretch;
+}
+
+.pricing-grid > .panel {
+    min-width: 0;
+    height: 100%;
+}
+

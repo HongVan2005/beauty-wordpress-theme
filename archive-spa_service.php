@@ -1,5 +1,8 @@
-<?php get_header(); ?>
-<section class="page-hero"><div class="container"><span class="eyebrow">Chăm sóc theo nhu cầu</span><h1 class="page-title">Dịch vụ Beauty Spa</h1><p>Tìm dịch vụ theo nhóm, xem chi tiết và gửi yêu cầu đặt lịch.</p><form role="search" method="get" class="service-search" action="<?php echo esc_url(home_url('/')); ?>"><input type="hidden" name="post_type" value="spa_service"><label class="screen-reader-text" for="svc-search">Tìm dịch vụ</label><input id="svc-search" type="search" name="s" placeholder="Tìm dịch vụ..." value="<?php echo esc_attr(get_search_query()); ?>"><button class="btn" type="submit">Tìm kiếm</button></form></div></section>
-<main class="content-area container"><div class="bv-chips-row" role="navigation" aria-label="Nhóm dịch vụ"><a class="bv-pill<?php echo is_post_type_archive('spa_service') ? ' active' : ''; ?>" href="<?php echo esc_url(get_post_type_archive_link('spa_service')); ?>">Tất cả</a><?php $beauty_terms = get_terms(array('taxonomy' => 'spa_service_cat', 'hide_empty' => false)); if (!is_wp_error($beauty_terms)) { foreach ($beauty_terms as $beauty_term) { echo '<a class="bv-pill' . (is_tax('spa_service_cat', $beauty_term->term_id) ? ' active' : '') . '" href="' . esc_url(get_term_link($beauty_term)) . '">' . esc_html($beauty_term->name) . '</a>'; } } ?></div>
-<?php if (have_posts()) : ?><div class="bv-grid"><?php while (have_posts()) : the_post(); get_template_part('template-parts/service-card'); endwhile; ?></div><?php beauty_pagination(); else : ?><div class="empty-state"><h2>Chưa có dịch vụ phù hợp</h2><p>Quản trị viên có thể thêm dịch vụ trong WordPress Admin → Dịch vụ Spa.</p></div><?php endif; ?></main>
-<?php get_footer(); ?>
+<?php
+/**
+ * Trang Dịch vụ (archive spa_service) – bố cục 2 cột giống trang Sản phẩm.
+ * Toàn bộ giao diện nằm trong template-parts/service-layout.php.
+ */
+get_header();
+get_template_part('template-parts/service-layout');
+get_footer();
